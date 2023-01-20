@@ -3,6 +3,7 @@ using PlacementPortal.Application.Common;
 using PlacementPortal.Application.Interfaces.Repositories;
 using PlacementPortal.Application.Interfaces.Services;
 using PlacementPortal.Domain.Entities;
+using PlacementPortal.Domain.Enum;
 using PlacementPortal.Model.Models;
 using PlacementPortal.Shared.Common;
 
@@ -61,10 +62,39 @@ namespace PlacementPortal.Application.Services
             user.ModifiedDate = _dateTimeProvider.DateTimeOffsetNow;
 
             await _unitOfWork.UserRepository.Add(user);
+
+            if (register.UserTypeId == UserTypeEnum.Company.GetEnumGuid())
+            {
+                var company = _mapper.Map<Company>(register);
+
+                company.Id = Guid.NewGuid();
+                company.IsActive = true;
+                company.CreatedBy = user.Id;
+                company.CreatedDate = _dateTimeProvider.DateTimeOffsetNow;
+                company.ModifiedBy = user.Id;
+                company.ModifiedDate = _dateTimeProvider.DateTimeOffsetNow;
+
+                await _unitOfWork.CompanyRepository.Add(company);
+            }
+            else
+            {
+                var college = _mapper.Map<College>(register);
+
+                college.Id = Guid.NewGuid();
+                college.IsActive = true;
+                college.CreatedBy = user.Id;
+                college.CreatedDate = _dateTimeProvider.DateTimeOffsetNow;
+                college.ModifiedBy = user.Id;
+                college.ModifiedDate = _dateTimeProvider.DateTimeOffsetNow;
+
+                await _unitOfWork.CollegeRepository.Add(college);
+            }
+
             await _unitOfWork.Save();
 
             var authenticationModel = _mapper.Map<AuthenticationModel>(user);
             return authenticationModel;
         }
+
     }
 }

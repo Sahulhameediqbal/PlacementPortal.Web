@@ -10,16 +10,21 @@ namespace PlacementPortal.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection service, ConfigurationManager configuration)
         {
-            
+
             service.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             service.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
-            service.AddScoped<IAuthenticationService, AuthenticationService>();
-            service.AddScoped<IUserService, UserService>();
+            service.AddTransient<IAuthenticationService, AuthenticationService>();
+            service.AddTransient<IUserService, UserService>();
+            service.AddTransient<ICollegeService, CollegeService>();
+            service.AddTransient<ICompanyService, CompanyService>();
+            service.AddTransient<ICompanyRequestService, CompanyRequestService>();
+            service.AddTransient<IPlacementProcessService, PlacementProcessService>();
+            service.AddTransient<IStudentInfoService, StudentInfoService>();
             return service;
         }
-      
+
 
     }
 }
