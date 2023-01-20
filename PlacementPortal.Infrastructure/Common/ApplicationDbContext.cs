@@ -9,6 +9,17 @@ namespace PlacementPortal.Infrastructure.Common
         { 
 
         }
+
         public DbSet<User> User { get; set; }
+        public DbSet<College> College { get; set; }
+        public DbSet<Company> Company { get; set; }
+        public DbSet<CompanyRequest> CompanyRequest { get; set; }
+        public DbSet<Course> Course { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<InterviewStatus> InterviewStatus { get; set; }
+        public DbSet<PlacementProcess> PlacementProcess { get; set; }
+        public DbSet<StudentInfo> StudentInfo { get; set; }
+        public DbSet<StudentStatus> StudentStatus { get; set; }
+        public DbSet<UserType> UserType { get; set; }
     }
 }

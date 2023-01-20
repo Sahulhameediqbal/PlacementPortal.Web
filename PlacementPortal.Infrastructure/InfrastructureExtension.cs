@@ -13,7 +13,7 @@ namespace PlacementPortal.Infrastructure
             service.AddDbContext<ApplicationDbContext>(Options => 
                         Options.UseSqlServer(configuration.GetConnectionString("ApplicationDbConfig")));
 
-            service.AddScoped<IUnitOfWork, UnitOfWork>();
+            service.AddTransient<IUnitOfWork, UnitOfWork>();
 
             return service;
         }
