@@ -6,4 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PlacementPortal.Application\PlacementPortal.Application.csproj" />
+    <ProjectReference Include="..\PlacementPortal.Infrastructure\PlacementPortal.Infrastructure.csproj" />
+    <ProjectReference Include="..\PlacementPortal.Model\PlacementPortal.Model.csproj" />
+  </ItemGroup>
+
 </Project>
