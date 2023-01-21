@@ -5,15 +5,15 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlacementPortal.Web", "PlacementPortal.Web\PlacementPortal.Web.csproj", "{48014EBF-81A5-4A0F-9563-3ECE4D8C9295}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacementPortal.Application", "PlacementPortal.Application\PlacementPortal.Application.csproj", "{15D36F4F-0224-4D76-816C-977A8B88B4F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlacementPortal.Application", "PlacementPortal.Application\PlacementPortal.Application.csproj", "{15D36F4F-0224-4D76-816C-977A8B88B4F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacementPortal.Model", "PlacementPortal.Model\PlacementPortal.Model.csproj", "{A4D779D8-37EA-4EDD-A0DB-F8B6AF58C28C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlacementPortal.Model", "PlacementPortal.Model\PlacementPortal.Model.csproj", "{A4D779D8-37EA-4EDD-A0DB-F8B6AF58C28C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacementPortal.Domain", "PlacementPortal.Domain\PlacementPortal.Domain.csproj", "{D70A57B3-DA38-4B87-B900-5836D3B9DD11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlacementPortal.Domain", "PlacementPortal.Domain\PlacementPortal.Domain.csproj", "{D70A57B3-DA38-4B87-B900-5836D3B9DD11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacementPortal.Infrastructure", "PlacementPortal.Infrastructure\PlacementPortal.Infrastructure.csproj", "{A3C01307-2275-4012-B244-4FAFB4E639B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlacementPortal.Infrastructure", "PlacementPortal.Infrastructure\PlacementPortal.Infrastructure.csproj", "{A3C01307-2275-4012-B244-4FAFB4E639B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacementPortal.Shared", "PlacementPortal.Shared\PlacementPortal.Shared.csproj", "{559C0C01-2729-436B-BF76-8A43E057090E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlacementPortal.Shared", "PlacementPortal.Shared\PlacementPortal.Shared.csproj", "{559C0C01-2729-436B-BF76-8A43E057090E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

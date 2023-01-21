@@ -1,27 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PlacementPortal.Domain.Entities;
 using PlacementPortal.Model.Models;
 using PlacementPortal.Web.Models;
 
 namespace PlacementPortal.Web.Controllers
 {
-    public class CollegeController : BaseController
+    public class StudentController : Controller
     {
         [HttpGet]
-        public IActionResult College()
+        public IActionResult Student()
         {
-            return View("College");
+            return View("Student");
         }
 
         [HttpGet]
-        public IActionResult AddCollege()
+        public IActionResult AddStudent()
         {
-            return View("AddCollege");
+            return View("AddStudent");
         }
 
         [HttpPost]
-        public JsonResult AddCollege(CollegeModel data)
-        {            
+        public JsonResult AddStudent(StudentModel data)
+        {
             Response reponse = new Response();
 
             if (data != null)

@@ -1,0 +1,127 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model PlacementPortal.Model.Models.RegisterModel
+
+<link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="~/vendor/quill/quill.snow.css" rel="stylesheet">
+<link href="~/vendor/quill/quill.bubble.css" rel="stylesheet">
+<link href="~/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="~/vendor/simple-datatables/style.css" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="~/css/style.css" rel="stylesheet" />
+
+<style>
+    .form-control input {
+        width: 30px !important;
+    }
+</style>
+
+<main id="main" class="main">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Register</h5>
+                    <div class="row">
+                        <div id="message"></div>
+                        <div class="" id="profile-edit">
+
+                            <!-- Profile Edit Form -->
+
+                            <div class="row mb-3">
+                                <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="fullName" type="text" class="form-control" id="Email">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="about" class="col-md-4 col-lg-3 col-form-label">Password</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="country" type="text" class="form-control" id="Password">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="company" class="col-md-4 col-lg-3 col-form-label">ConfirmPassword</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="company" type="text" class="form-control" id="ConfirmPassword">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Job" class="col-md-4 col-lg-3 col-form-label">Name</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="job" type="text" class="form-control" id="Name">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Country" class="col-md-4 col-lg-3 col-form-label">UserTypeId</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="job" type="text" class="form-control" id="UserTypeId">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Address" class="col-md-4 col-lg-3 col-form-label">Code</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="job" type="text" class="form-control" id="Code">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Address" class="col-md-4 col-lg-3 col-form-label">PhoneNumber</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="job" type="text" class="form-control" id="PhoneNumber">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <textarea name="about" class="form-control" id="Address" style="height: 100px"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-12 text-end">
+                                    <input type="button" class="btn btn-primary" value="Save Changes" id="btnRegister" />
+                                </div>
+                            </div>
+
+                            <!-- End Profile Edit Form -->
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main><!-- End #main -->
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/vendor/apexcharts/apexcharts.min.js"></script>
+<!-- Vendor JS Files -->
+<script src="~/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/vendor/chart.js/chart.umd.js"></script>
+<script src="~/vendor/echarts/echarts.min.js"></script>
+<script src="~/vendor/quill/quill.min.js"></script>
+<script src="~/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="~/vendor/tinymce/tinymce.min.js"></script>
+<script src="~/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="~/js/main.js"></script>
+
+<script src="~/js/college.js"></script>

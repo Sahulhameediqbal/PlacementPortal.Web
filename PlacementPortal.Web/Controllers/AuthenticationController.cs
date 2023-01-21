@@ -19,9 +19,24 @@ namespace PlacementPortal.Web.Controllers
         /// <returns>Redirect User</returns>
 
         [HttpPost]
-        public IActionResult LogIn(LogIn mdlLogin)
+        public JsonResult CheckUser(int number1, int number2)
         {
-            return View();
+            //LogIn / Registered/Dashboard /Profile
+            LoginStatus status = new LoginStatus();
+            if (number1 != null)
+            {                
+                status.Success = true;
+                status.TargetURL = "";                
+                status.Message = "Login attempt successful!";
+                //Session["UserName"] = mdlLogin.Email;
+            }
+            else
+            {
+                status.Success = false;
+                status.Message = "Invalid UserID or Password!";
+                status.TargetURL = "";
+            }
+            return Json(status);
         }
     }
 }
