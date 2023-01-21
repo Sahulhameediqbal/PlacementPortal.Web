@@ -1,10 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PlacementPortal.Application.Interfaces.Services;
+using PlacementPortal.Model.Models;
 using PlacementPortal.Web.Models;
 
 namespace PlacementPortal.Web.Controllers
 {
     public class AuthenticationController : BaseController
     {
+        private readonly IAuthenticationService _authenticationService;
+        
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="authenticationService"></param>
+        public  AuthenticationController(IAuthenticationService authenticationService) 
+        {
+            _authenticationService = authenticationService;
+        }
+
+        /// <summary>
+        /// Load the LogIn Page
+        /// </summary>
+        /// <returns>LogIn Page</returns>
         [HttpGet]
         public IActionResult LogIn()
         {
@@ -17,13 +34,15 @@ namespace PlacementPortal.Web.Controllers
         /// <param name="mdlLogin">User Name</param>
         /// <param name="mdlLogin">Password</param>
         /// <returns>Redirect User</returns>
-
+        
         [HttpPost]
-        public JsonResult CheckUser(int number1, int number2)
+        public async Task<JsonResult> CheckUser([FromBody] LoginModel login)
         {
+            var result = await _authenticationService.Login(login);
+
             //LogIn / Registered/Dashboard /Profile
             LoginStatus status = new LoginStatus();
-            if (number1 != null)
+            if (login != null)
             {                
                 status.Success = true;
                 status.TargetURL = "";                

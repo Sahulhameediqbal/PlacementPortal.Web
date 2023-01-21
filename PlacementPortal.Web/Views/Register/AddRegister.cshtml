@@ -17,18 +17,13 @@
 <!-- Template Main CSS File -->
 <link href="~/css/style.css" rel="stylesheet" />
 
-<style>
-    .form-control input {
-        width: 30px !important;
-    }
-</style>
 
 <main id="main" class="main">
     <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Register</h5>
+                    <h5 class="card-title">New User Registration</h5>
                     <div class="row">
                         <div id="message"></div>
                         <div class="" id="profile-edit">
@@ -66,7 +61,11 @@
                             <div class="row mb-3">
                                 <label for="Country" class="col-md-4 col-lg-3 col-form-label">UserTypeId</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="job" type="text" class="form-control" id="UserTypeId">
+                                    <select class="form-select" id="UserTypeId" aria-label="Default select example">
+                                        <option selected>Select User Type</option>
+                                        <option value="DC43B2F5-0978-49DE-AE7B-977A4425BF73">Company</option>
+                                        <option value="22925928-880A-4261-BC6B-ABA4BB3FE5FA">College</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -124,4 +123,4 @@
 <!-- Template Main JS File -->
 <script src="~/js/main.js"></script>
 
-<script src="~/js/college.js"></script>
+<script src="~/js/Register.js"></script>
