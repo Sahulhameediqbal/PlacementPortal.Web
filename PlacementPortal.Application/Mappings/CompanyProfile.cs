@@ -10,6 +10,9 @@ namespace PlacementPortal.Application.Mappings
         {
             CreateMap<RegisterModel, Company>()
                     .ReverseMap();
+
+            CreateMap<CompanyModel, Company>()
+                    .ReverseMap();
         }
     }
 }
