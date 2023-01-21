@@ -3,6 +3,8 @@ using PlacementPortal.Application.Common;
 using PlacementPortal.Application.Interfaces.Repositories;
 using PlacementPortal.Application.Interfaces.Services;
 using PlacementPortal.Application.Services.Base;
+using PlacementPortal.Domain.Entities;
+using PlacementPortal.Model.Models;
 
 namespace PlacementPortal.Application.Services
 {
@@ -12,6 +14,64 @@ namespace PlacementPortal.Application.Services
                                   IMapper mapper,
                                   IDateTimeProvider dateTimeProvider) : base(unitOfWork, mapper, dateTimeProvider)
         {
+        }
+
+        public async Task<StudentInfoModel> Get(Guid id)
+        {
+            var response = await UnitOfWork.StudentInfoRepository.Get(id);
+            var studentInfo = Mapper.Map<StudentInfoModel>(response);
+            return studentInfo;
+        }
+
+        public async Task<List<StudentInfoModel>> GetAll()
+        {
+            var response = await UnitOfWork.StudentInfoRepository.GetAll();
+            var studentInfo = Mapper.Map<List<StudentInfoModel>>(response);
+            return studentInfo;
+        }
+
+        public async Task Save(StudentInfoModel model)
+        {
+            if (model.Id == Guid.Empty)
+            {
+                await Add(model);
+            }
+            else
+            {
+                await Update(model);
+            }
+
+            await UnitOfWork.Save();
+        }
+
+        private async Task Add(StudentInfoModel model)
+        {
+            var studentInfo = Mapper.Map<StudentInfo>(model);
+
+            studentInfo.Id = Guid.NewGuid();
+            studentInfo.IsActive = true;
+            studentInfo.CreatedBy = studentInfo.Id;
+            studentInfo.CreatedDate = DateTimeProvider.DateTimeOffsetNow;
+            studentInfo.ModifiedBy = studentInfo.Id;
+            studentInfo.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
+
+            await UnitOfWork.StudentInfoRepository.Add(studentInfo);
+        }
+
+        private async Task Update(StudentInfoModel model)
+        {
+            var studentInfo = await UnitOfWork.StudentInfoRepository.Get(model.Id);
+            if (studentInfo == null)
+            {
+                throw new ApplicationException("StudentInfo not found");
+            }
+
+            studentInfo = Mapper.Map(model, studentInfo);
+
+            studentInfo.ModifiedBy = studentInfo.Id;
+            studentInfo.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
+
+            UnitOfWork.StudentInfoRepository.Update(studentInfo);
         }
     }
 }

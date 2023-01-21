@@ -4,14 +4,11 @@ using PlacementPortal.Model.Models;
 
 namespace PlacementPortal.Application.Mappings
 {
-    public class CollegeProfile : Profile
+    public class PlacementProcessProfile:Profile
     {
-        public CollegeProfile()
+        public PlacementProcessProfile()
         {
-            CreateMap<RegisterModel, College>()
-                   .ReverseMap();
-
-            CreateMap<CollegeModel, College>()
+            CreateMap<PlacementProcessModel, PlacementProcess>()
                    .ReverseMap();
         }
     }
