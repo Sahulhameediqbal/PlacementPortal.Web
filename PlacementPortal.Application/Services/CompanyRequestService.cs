@@ -3,6 +3,8 @@ using PlacementPortal.Application.Common;
 using PlacementPortal.Application.Interfaces.Repositories;
 using PlacementPortal.Application.Interfaces.Services;
 using PlacementPortal.Application.Services.Base;
+using PlacementPortal.Domain.Entities;
+using PlacementPortal.Model.Models;
 
 namespace PlacementPortal.Application.Services
 {
@@ -12,6 +14,63 @@ namespace PlacementPortal.Application.Services
                                      IMapper mapper,
                                      IDateTimeProvider dateTimeProvider) : base(unitOfWork, mapper, dateTimeProvider)
         {
+        }
+
+        public async Task<CompanyRequestModel> Get(Guid id)
+        {
+            var response = await UnitOfWork.CompanyRequestRepository.Get(id);
+            var companyRequest = Mapper.Map<CompanyRequestModel>(response);
+            return companyRequest;
+        }
+
+        public async Task<List<CompanyRequestModel>> GetAll()
+        {
+            var response = await UnitOfWork.CompanyRequestRepository.GetAll();
+            var companyRequest = Mapper.Map<List<CompanyRequestModel>>(response);
+            return companyRequest;
+        }
+
+        public async Task Save(CompanyRequestModel model)
+        {
+            if (model.Id == Guid.Empty)
+            {
+                await Add(model);
+            }
+            else
+            {
+                await Update(model);
+            }
+
+            await UnitOfWork.Save();
+        }
+
+        private async Task Add(CompanyRequestModel model)
+        {
+            var companyRequest = Mapper.Map<CompanyRequest>(model);
+
+            companyRequest.Id = Guid.NewGuid();           
+            companyRequest.CreatedBy = companyRequest.Id;
+            companyRequest.CreatedDate = DateTimeProvider.DateTimeOffsetNow;
+            companyRequest.ModifiedBy = companyRequest.Id;
+            companyRequest.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
+
+            await UnitOfWork.CompanyRequestRepository.Add(companyRequest);
+        }
+
+        private async Task Update(CompanyRequestModel model)
+        {
+            var companyRequest = await UnitOfWork.CompanyRequestRepository.Get(model.Id);
+            if (companyRequest == null)
+            {
+                throw new ApplicationException("CompanyRequest not found");
+            }
+
+            companyRequest = Mapper.Map(model, companyRequest);
+
+            companyRequest.ModifiedBy = companyRequest.Id;
+            companyRequest.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
+
+            UnitOfWork.CompanyRequestRepository.Update(companyRequest);
         }
     }
 }

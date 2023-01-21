@@ -1,14 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PlacementPortal.Model.Models
+﻿namespace PlacementPortal.Model.Models
 {
-    public class StudentModel
+    public class StudentInfoModel
     {
+        public Guid Id { get; set; }
         public string Name { get; set; } = null!;
         public Guid CollegeId { get; set; }
         public Guid DepartmentId { get; set; }
-        [Required]
-        [EmailAddress]
         public string Email { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;
         public string Rollumber { get; set; } = null!;
