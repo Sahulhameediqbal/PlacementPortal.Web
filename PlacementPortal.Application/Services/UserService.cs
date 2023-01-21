@@ -14,7 +14,5 @@ namespace PlacementPortal.Application.Services
         {
 
         }
-
-
     }
 }

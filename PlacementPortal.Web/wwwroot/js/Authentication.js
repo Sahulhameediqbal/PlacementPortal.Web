@@ -28,3 +28,7 @@ $("#btnLogIn").click(function () {
             }
     });
 });
+
+$('#Password').bind("cut copy paste", function (e) {
+    e.preventDefault();
+});

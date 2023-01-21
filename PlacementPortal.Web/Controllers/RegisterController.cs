@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PlacementPortal.Application.Interfaces.Services;
 using PlacementPortal.Domain.Entities;
 using PlacementPortal.Model.Models;
@@ -8,13 +9,24 @@ namespace PlacementPortal.Web.Controllers
 {
     public class RegisterController : BaseController
     {
-        private readonly IAuthenticationService _authenticationService;
+        #region Variable Declaration
+        private readonly IAuthenticationService _authenticationService; 
+        #endregion
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="authenticationService"></param>
         public RegisterController(IAuthenticationService authenticationService)
         {
             _authenticationService = authenticationService;
         }
 
+
+        /// <summary>
+        /// Load Register Page
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Register()
         {
@@ -23,6 +35,10 @@ namespace PlacementPortal.Web.Controllers
             return View("Register");
         }
 
+        /// <summary>
+        /// Open new Register page for adding new User
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult AddRegister()
         {
@@ -32,10 +48,23 @@ namespace PlacementPortal.Web.Controllers
             return View("AddRegister");
         }
 
+        /// <summary>
+        /// Save the User Data
+        /// </summary>
+        /// <param name="registerData"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<JsonResult> AddRegister([FromBody] RegisterModel registerData)
         {
             Response reponse = new Response();
+            if (!ModelState.IsValid)
+            {
+                var message = string.Join(" | ", ModelState.Values
+                   .SelectMany(v => v.Errors)
+                   .Select(e => e.ErrorMessage));
+                reponse.Message = message;
+            }
+
             var result = await _authenticationService.Register(registerData);
 
             if (registerData != null)
