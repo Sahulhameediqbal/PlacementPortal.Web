@@ -2,18 +2,17 @@
 $("#btnLogIn").click(function () {
     debugger;
     $("#message").html("Logging in...");
+
     var data = {
-        "userid": $("#Username").val(),
-        "password": $("#Password").val()
+        Email: $("#Email").val(),
+        Password: $("#Password").val()
     };
-    val1 = "5";
-    val2 = "2";
+    
     $.ajax({
         url: "/Authentication/CheckUser",
         contentType: "application/json; charset=utf-8",
         type: "POST",
-        //data: JSON.stringify(data),
-        data: { number1: val1, number2: val2 },
+        data: JSON.stringify(data),
         dataType: "json",
         success: function (status) {
             debugger;
@@ -22,7 +21,6 @@ $("#btnLogIn").click(function () {
             if (status.success) {
                 window.location.href = "https://localhost:7014/Home/Index";//status.TargetURL;
             }
-            
         },
         error: function (req, status, error) {
             console.log(error);

@@ -2,15 +2,8 @@
 $("#btnCollegeSave").click(function () {
     debugger;
     $("#message").html("Logging in...");
-    var data = {
-        "Code": $("#Code").val(),
-        "Name": $("#Name").val(),
-        "Email": $("#Email").val(),
-        "PhoneNumber": $("#PhoneNumber").val(),
-        "Address": $("#Address").val(),
-        "IsActive": $("#IsActive").val()
-    };
-    var formData = {
+
+    var collegeData = {
         Code: $("#Code").val(),
         Name: $("#Name").val(),
         Email: $("#Email").val(),
@@ -23,7 +16,7 @@ $("#btnCollegeSave").click(function () {
         url: "/College/AddCollege",
         contentType: "application/json; charset=utf-8",
         type: "POST",
-        data: formData,
+        data: collegeData,
         dataType: "json",
         success: function (status) {
             debugger;
@@ -32,7 +25,7 @@ $("#btnCollegeSave").click(function () {
         },
         error: function (req, status, error) {
             alert(error);
-            $("#message").html("Error while authenticating user credentials!");
+            $("#message").html("Error while inserting College data!");
         }
     });
 });
