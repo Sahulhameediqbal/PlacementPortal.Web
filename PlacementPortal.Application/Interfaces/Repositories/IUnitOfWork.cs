@@ -8,7 +8,14 @@
         ICompanyRequestRepository CompanyRequestRepository { get; }
         IPlacementProcessRepository PlacementProcessRepository { get; }
         IStudentInfoRepository StudentInfoRepository { get; }
+
+        IUserTypeRepository UserTypeRepository { get; }
+        IStudentStatusRepository StudentStatusRepository { get; }
+        IInterviewStatusRepository InterviewStatusRepository { get; }
+        IDepartmentRepository DepartmentRepository { get; }
+        ICourseRepository CourseRepository { get; }
+
         Task<int> Save();
-        
+
     }
 }

@@ -23,9 +23,7 @@
         data: JSON.stringify(registerData),
         dataType: "json",
         success: function (status) {
-            debugger;
-            ClearControls();
-            $("#message").html(status.message);
+            window.location.href = "https://localhost:7014/Home/Index";
         },
         error: function (req, status, error) {
             alert(error);

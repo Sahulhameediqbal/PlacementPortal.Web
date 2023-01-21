@@ -14,8 +14,6 @@ namespace PlacementPortal.Application.Mappings
             CreateMap<RegisterModel, User>()
                 .ReverseMap();
 
-            CreateMap<StudentModel, StudentInfoModel>()
-                .ReverseMap();
         }
 
     }
