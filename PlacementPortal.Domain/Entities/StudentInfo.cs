@@ -6,6 +6,7 @@ namespace PlacementPortal.Domain.Entities
     {
         public string Name { get; set; } = null!;
         public Guid CollegeId { get; set; }
+        public Guid CourseId { get; set; }
         public Guid DepartmentId { get; set; }
         public string Email { get; set; } = null!;
         public string PhoneNumber { get; set; } = null!;

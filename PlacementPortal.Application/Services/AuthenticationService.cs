@@ -36,7 +36,30 @@ namespace PlacementPortal.Application.Services
                 throw new ApplicationException("Invalid Password");
             }
             var authenticationModel = _mapper.Map<AuthenticationModel>(user);
-
+            if (user.UserTypeId != Guid.Empty)
+            {
+                var usertype = await _unitOfWork.UserTypeRepository.Get(user.UserTypeId);
+                if (usertype != null)
+                {
+                    authenticationModel.UserType = usertype.Name;
+                }
+                if (user.UserTypeId == UserTypeEnum.Company.GetEnumGuid())
+                {
+                    var company = await _unitOfWork.CompanyRepository.FindAsync(x => x.UserId == user.Id);
+                    if (company != null)
+                    {
+                        authenticationModel.ComapanyId = company.Id;
+                    }
+                }
+                else
+                {
+                    var college = await _unitOfWork.CollegeRepository.FindAsync(x => x.UserId == user.Id);
+                    if (college != null)
+                    {
+                        authenticationModel.CollegeId = college.Id;
+                    }
+                }
+            }
             return authenticationModel;
         }
 
@@ -68,6 +91,7 @@ namespace PlacementPortal.Application.Services
                 var company = _mapper.Map<Company>(register);
 
                 company.Id = Guid.NewGuid();
+                company.UserId = user.Id;
                 company.IsActive = true;
                 company.CreatedBy = user.Id;
                 company.CreatedDate = _dateTimeProvider.DateTimeOffsetNow;
@@ -81,6 +105,7 @@ namespace PlacementPortal.Application.Services
                 var college = _mapper.Map<College>(register);
 
                 college.Id = Guid.NewGuid();
+                college.UserId = user.Id;
                 college.IsActive = true;
                 college.CreatedBy = user.Id;
                 college.CreatedDate = _dateTimeProvider.DateTimeOffsetNow;
@@ -94,7 +119,7 @@ namespace PlacementPortal.Application.Services
 
             var authenticationModel = _mapper.Map<AuthenticationModel>(user);
             return authenticationModel;
-        }        
+        }
 
     }
 }

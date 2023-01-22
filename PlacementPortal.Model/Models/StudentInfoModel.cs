@@ -4,6 +4,7 @@
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = null!;
+        public Guid CourseId { get; set; }
         public Guid CollegeId { get; set; }
         public Guid DepartmentId { get; set; }
         public string Email { get; set; } = null!;

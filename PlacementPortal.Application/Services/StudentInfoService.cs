@@ -30,6 +30,13 @@ namespace PlacementPortal.Application.Services
             return studentInfo;
         }
 
+        public async Task<List<StudentInfoModel>> GetAll(Guid collegeId)
+        {
+            var response = UnitOfWork.StudentInfoRepository.Find(x => x.CollegeId == collegeId);
+            var studentInfo = Mapper.Map<List<StudentInfoModel>>(response);
+            return studentInfo;
+        }
+
         public async Task Save(StudentInfoModel model)
         {
             if (model.Id == Guid.Empty)

@@ -55,7 +55,7 @@ namespace PlacementPortal.Web.Controllers
         /// <param name="studentData"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<JsonResult> AddStudent([FromBody] StudentModel studentData)
+        public async Task<JsonResult> AddStudent([FromBody] StudentInfoModel studentData)
         {
             Response reponse = new Response();
             if(studentData == null) 
