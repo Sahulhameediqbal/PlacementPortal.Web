@@ -31,6 +31,12 @@ namespace PlacementPortal.Application.Services
             return studentInfo;
         }
 
+        public async Task<List<StudentInfoModel>> GetAllCurrent()
+        {
+            var response = await GetAll(CurrentUserService.CollegeId);
+            return response;
+        }
+
         public async Task<List<StudentInfoModel>> GetAll(Guid collegeId)
         {
             var response = UnitOfWork.StudentInfoRepository.Find(x => x.CollegeId == collegeId);
