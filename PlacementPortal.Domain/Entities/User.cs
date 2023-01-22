@@ -9,6 +9,9 @@ namespace PlacementPortal.Domain.Entities
         public string Password { get; set; } = null!;
         public string PasswordSalt { get; set; } = null!;
         public Guid UserTypeId { get; set; }
-        public bool IsActive { get; set; }        
+        public bool IsActive { get; set; }       
+        
+        public virtual Company Company { get; set; }
+        public virtual College College { get; set; }
     }
 }
