@@ -94,7 +94,7 @@ namespace PlacementPortal.Application.Services
 
             var authenticationModel = _mapper.Map<AuthenticationModel>(user);
             return authenticationModel;
-        }
+        }        
 
     }
 }

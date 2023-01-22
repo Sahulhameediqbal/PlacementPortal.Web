@@ -1,6 +1,6 @@
 ﻿namespace PlacementPortal.Model.Models
 {
-    public class UserTypeModel
+    public class StudentStatusModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = null!;

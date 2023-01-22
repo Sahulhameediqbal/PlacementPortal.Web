@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = null;
 }
 
 @model PlacementPortal.Model.Models.RegisterModel
@@ -33,33 +34,33 @@
                             <div class="row mb-3">
                                 <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="fullName" type="text" class="form-control" id="Email">
+                                    <input name="fullName" type="email" class="form-control" id="Email">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="about" class="col-md-4 col-lg-3 col-form-label">Password</label>
+                                <label for="Password" class="col-md-4 col-lg-3 col-form-label">Password</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="country" type="password" class="form-control" id="Password">
+                                    <input name="Password"  type="password" class="form-control" id="Password">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="company" class="col-md-4 col-lg-3 col-form-label">ConfirmPassword</label>
+                                <label for="ConfirmPassword" class="col-md-4 col-lg-3 col-form-label">ConfirmPassword</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="company" type="password" class="form-control" id="ConfirmPassword">
+                                    <input name="ConfirmPassword" type="password" class="form-control" id="ConfirmPassword">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="Job" class="col-md-4 col-lg-3 col-form-label">Name</label>
+                                <label for="Name" class="col-md-4 col-lg-3 col-form-label">Name</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="job" type="text" class="form-control" id="Name">
+                                    <input name="Name" type="text" class="form-control" id="Name">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="Country" class="col-md-4 col-lg-3 col-form-label">UserTypeId</label>
+                                <label for="UserTypeId" class="col-md-4 col-lg-3 col-form-label">UserTypeId</label>
                                 <div class="col-md-8 col-lg-9">
                                     <select class="form-select" id="UserTypeId" aria-label="Default select example">
                                         <option selected value="DC43B2F5-0978-49DE-AE7B-977A4425BF73">Company</option>
@@ -69,23 +70,23 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="Address" class="col-md-4 col-lg-3 col-form-label">Code</label>
+                                <label for="Code" class="col-md-4 col-lg-3 col-form-label">Code</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="job" type="text" class="form-control" id="Code">
+                                    <input name="Code" type="text" class="form-control" id="Code">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="Address" class="col-md-4 col-lg-3 col-form-label">PhoneNumber</label>
+                                <label for="PhoneNumber" class="col-md-4 col-lg-3 col-form-label">PhoneNumber</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="job" type="text" class="form-control" id="PhoneNumber">
+                                    <input name="PhoneNumber" type="number" class="form-control" id="PhoneNumber">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <textarea name="about" class="form-control" id="Address" style="height: 100px"></textarea>
+                                    <textarea name="Address" class="form-control" id="Address" style="height: 100px"></textarea>
                                 </div>
                             </div>
 

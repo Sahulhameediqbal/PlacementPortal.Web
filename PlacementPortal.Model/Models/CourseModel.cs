@@ -1,9 +1,9 @@
 ﻿namespace PlacementPortal.Model.Models
 {
-    public class UserTypeModel
+    public class CourseModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = null!;
-        public bool IsActive { get; set; }
+        public int Duration { get; set; }
     }
 }
