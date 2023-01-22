@@ -14,6 +14,7 @@ namespace PlacementPortal.Web.Controllers
         private readonly IStudentInfoService _studentInfoService;
         private readonly IMapper _mapper;
         private readonly ICollegeService _collegeService;
+        private readonly IUserService _userService;
         #endregion
 
         /// <summary>
@@ -21,11 +22,12 @@ namespace PlacementPortal.Web.Controllers
         /// </summary>
         /// <param name="studentInfoService"></param>
         /// <param name="mapper"></param>
-        public StudentController(IStudentInfoService studentInfoService, IMapper mapper, ICollegeService collegeService) 
+        public StudentController(IStudentInfoService studentInfoService, IMapper mapper, ICollegeService collegeService, IUserService userService) 
         {
             _studentInfoService = studentInfoService;
             _mapper= mapper;
             _collegeService = collegeService;
+            _userService = userService;
         }
 
         /// <summary>
@@ -43,19 +45,15 @@ namespace PlacementPortal.Web.Controllers
         [HttpGet]
         public JsonResult GetAllCourse()
         {
-            StudentInfoModel student = new StudentInfoModel();
-            var lstCollege = _collegeService.GetAll().Result;
-            student.Colleges = lstCollege;
-            return Json(new { data = student.Colleges });
+            var lstCourse = _userService.GetCourse().Result;
+            return Json(new { data = lstCourse });
         }
 
         [HttpGet]
         public JsonResult GetAllDepartment()
         {
-            StudentInfoModel student = new StudentInfoModel();
-            var lstCollege = _collegeService.GetAll().Result;
-            student.Colleges = lstCollege;
-            return Json(new { data = student.Colleges });
+            var lstDepartment = _userService.GetDepartment().Result;            
+            return Json(new { data = lstDepartment });
         }
 
         /// <summary>

@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
-    GetAllCollege();
-    GetAllCourse();
-    GetAllDepartment();
+    //GetAllCollege();
+    //GetAllCourse();
+    //GetAllDepartment();
 });
 
 function GetAllCollege() {
@@ -25,7 +25,7 @@ function GetAllCollege() {
     });
 }
 
-function GetAllCollege() {
+function GetAllCourse() {
     debugger;
     $.ajax({
         type: "Get",
@@ -46,7 +46,7 @@ function GetAllCollege() {
     });
 }
 
-function GetAllCollege() {
+function GetAllDepartment() {
     debugger;
     $.ajax({
         type: "Get",
