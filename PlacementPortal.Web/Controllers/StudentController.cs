@@ -12,7 +12,8 @@ namespace PlacementPortal.Web.Controllers
     {
         #region Variable Declartion
         private readonly IStudentInfoService _studentInfoService;
-        private readonly IMapper _mapper; 
+        private readonly IMapper _mapper;
+        private readonly ICollegeService _collegeService;
         #endregion
 
         /// <summary>
@@ -20,10 +21,11 @@ namespace PlacementPortal.Web.Controllers
         /// </summary>
         /// <param name="studentInfoService"></param>
         /// <param name="mapper"></param>
-        public StudentController(IStudentInfoService studentInfoService, IMapper mapper) 
+        public StudentController(IStudentInfoService studentInfoService, IMapper mapper, ICollegeService collegeService) 
         {
             _studentInfoService = studentInfoService;
             _mapper= mapper;
+            _collegeService = collegeService;
         }
 
         /// <summary>
@@ -45,9 +47,13 @@ namespace PlacementPortal.Web.Controllers
         [HttpGet]
         public IActionResult AddStudent()
         {
-            return View("AddStudent");
+            StudentInfoModel student = new StudentInfoModel();
+            var lstCollege = _collegeService.GetAll().Result;
+            student.Colleges = lstCollege;
+            return View("AddStudent", student);
         }
 
+        
 
         /// <summary>
         /// Save Student information
@@ -55,7 +61,7 @@ namespace PlacementPortal.Web.Controllers
         /// <param name="studentData"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<JsonResult> AddStudent([FromBody] StudentModel studentData)
+        public async Task<JsonResult> AddStudent([FromBody] StudentInfoModel studentData)
         {
             Response reponse = new Response();
             if(studentData == null) 

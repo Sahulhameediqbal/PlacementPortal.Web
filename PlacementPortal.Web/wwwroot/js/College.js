@@ -1,5 +1,38 @@
-﻿
-$("#btnCollegeSave").click(function () {
+﻿$(document).ready(function () {
+    GetAllCollege();
+});
+
+function GetAllCollege() {
+    debugger;
+    $.ajax({
+        type: "Get",
+        url: "/College/GetAllCollege",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+
+        success: function (result) {
+            debugger;
+            $("#CollegeList tbody").empty();
+            $.each(result.data, function (key, value) {
+
+                var rows = "<tr>"
+                    + "<td>" + value.id + "</td>"
+                    + "<td>" + value.name + "</td>"
+                    + "<td>" + value.email + "</td>"
+                    + "<td>" + value.phoneNumber + "</td>"
+                    + "<td>" + (value.isActive == true ? "Active" : "InActive") + "</td>"
+                    + "</tr>"
+                $("#CollegeList tbody").append(rows);
+            })
+        },
+        error: function (req, status, error) {
+            alert(error);
+            $("#message").html("Error while Loading College Details!");
+        }
+    });
+}
+
+$("#btnSaveCollege").click(function () {
     debugger;
     $("#message").html("Logging in...");
         
@@ -48,6 +81,10 @@ function validation() {
         $("#message").html("Please enter Email");
         isValid = false;
     }
+    else if (IsEmail(mailId) == false) {
+        $("#message").html("Invalid email");
+        return false;
+    }
     else if ($("#PhoneNumber").val() == '') {
         $("#message").html("Please enter PhoneNumber");
         isValid = false;
@@ -65,5 +102,14 @@ function ClearControls() {
     $("#Email").val('');
     $("#PhoneNumber").val('');
     $("#Address").val('');
+}
+
+function IsEmail(email) {
+    var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    if (!regex.test(email)) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
