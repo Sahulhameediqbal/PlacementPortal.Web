@@ -1,0 +1,150 @@
+﻿@page
+@model PlacementPortal.Model.Models.CompanyRequestModel
+@{
+}
+
+<link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="~/vendor/quill/quill.snow.css" rel="stylesheet">
+<link href="~/vendor/quill/quill.bubble.css" rel="stylesheet">
+<link href="~/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="~/vendor/simple-datatables/style.css" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="~/css/style.css" rel="stylesheet" />
+
+
+<main id="main" class="main">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Add Company Request</h5>
+                    <div class="row">
+                        <div id="message"></div>
+                        <div class="" id="profile-edit">
+
+                            <!-- Profile Edit Form -->
+
+                            @*<div class="row mb-3">
+                                <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Code</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="fullName" type="text" class="form-control" id="Code" maxlength="10">
+                                </div>
+                            </div>*@
+
+                            <div class="row mb-3">
+                                <label for="CollegeId" class="col-md-4 col-lg-3 col-form-label">CompanyId</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <select class="form-select" id="CompanyId" aria-label="Default select example">
+                                        <option value="4337DA3B-6908-4B82-BDC0-153120640082" selected="selected">Genpact</option>
+                                        <option value="DE4AF0CB-69EE-48C8-B650-57E007B6BEBD">Rencata</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="DepartmentId" class="col-md-4 col-lg-3 col-form-label">CollegeId</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <select class="form-select" id="CollegeId" aria-label="Default select example">
+                                        <option value="B554AEE3-82F3-4264-B122-6EE5A75106EB" selected="selected">SRM Institute of Science and Technology</option>
+                                        <option value="65533C32-7AFA-4ABD-A698-963E303885C1">Loyola College (Autonomous) </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="DOB" class="col-md-4 col-lg-3 col-form-label">Recuritment Date</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input type="date" class="form-control" id="RecuritmentDate" maxlength="10">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="DepartmentId" class="col-md-4 col-lg-3 col-form-label">DepartmentId</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <select class="form-select" id="DepartmentId" aria-label="Default select example">
+                                        <option value="6FF38DB9-4FE2-46E7-8FA9-4B01A812A4C1" selected="selected">Information Technology</option>
+                                        <option value="EE3FC92B-2AEA-42A7-BC3A-4EFF2FC5F072">EEE</option>
+                                        <option value="56E6A60A-DEAD-4C9A-A22F-8887E84EB04E">Civil</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="MinimumPercenage" class="col-md-4 col-lg-3 col-form-label">Minimum Percenage</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="MinimumPercenage" type="text" class="form-control" id="MinimumPercenage" maxlength="5">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="NoofInterviewRound" class="col-md-4 col-lg-3 col-form-label">No of Interview Round</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="NoofInterviewRound" type="text" class="form-control" id="NoofInterviewRound" maxlength="1">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="NoofRequirement" class="col-md-4 col-lg-3 col-form-label">No of Requirement</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input name="NoofRequirement" type="text" class="form-control" id="NoofRequirement" maxlength="3" />
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Comments" class="col-md-4 col-lg-3 col-form-label">Comments</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <textarea name="Comments" class="form-control" id="Comments" style="height: 100px" maxlength="500"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="Address" class="col-md-4 col-lg-3 col-form-label">IsActive</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input class="form-check-input" type="checkbox" id="IsActive" checked>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="CollegeResponse" class="col-md-4 col-lg-3 col-form-label">College Response</label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input class="form-check-input" type="checkbox" id="CollegeResponse" checked>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-12 text-end">
+                                    <input type="button" class="btn btn-primary" value="Save Changes" id="btnSaveComapnyRequest" />
+                                </div>
+                            </div>
+
+                            <!-- End Profile Edit Form -->
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main><!-- End #main -->
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/vendor/apexcharts/apexcharts.min.js"></script>
+<!-- Vendor JS Files -->
+<script src="~/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/vendor/chart.js/chart.umd.js"></script>
+<script src="~/vendor/echarts/echarts.min.js"></script>
+<script src="~/vendor/quill/quill.min.js"></script>
+<script src="~/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="~/vendor/tinymce/tinymce.min.js"></script>
+<script src="~/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="~/js/main.js"></script>
+
+<script src="~/js/CompanyRequest.js"></script>

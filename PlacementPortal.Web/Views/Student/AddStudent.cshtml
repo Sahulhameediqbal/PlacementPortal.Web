@@ -4,7 +4,7 @@
 @{
 }
 
-@model PlacementPortal.Model.Models.StudentModel
+@model PlacementPortal.Model.Models.StudentInfoModel
 
 <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -40,9 +40,8 @@
                                 <label for="CollegeId" class="col-md-4 col-lg-3 col-form-label">CollegeId</label>
                                 <div class="col-md-8 col-lg-9">
                                     <select class="form-select" id="CollegeId" aria-label="Default select example">
-                                        <option selected>Select College</option>
-                                        <option value="DC43B2F5-0978-49DE-AE7B-977A4425BF73" selected="selected">Company</option>
-                                        <option value="22925928-880A-4261-BC6B-ABA4BB3FE5FA">College</option>
+                                        @*<option value="DC43B2F5-0978-49DE-AE7B-977A4425BF73" selected="selected">Company</option>
+                                        <option value="22925928-880A-4261-BC6B-ABA4BB3FE5FA">College</option>*@
                                     </select>
                                 </div>
                             </div>
@@ -51,7 +50,6 @@
                                 <label for="DepartmentId" class="col-md-4 col-lg-3 col-form-label">DepartmentId</label>
                                 <div class="col-md-8 col-lg-9">
                                     <select class="form-select" id="DepartmentId" aria-label="Default select example">
-                                        <option selected>Select Department</option>
                                         <option value="DC43B2F5-0978-49DE-AE7B-977A4425BF73" selected="selected">Company</option>
                                         <option value="22925928-880A-4261-BC6B-ABA4BB3FE5FA">College</option>
                                     </select>
@@ -83,8 +81,7 @@
                                 <label for="Gender" class="col-md-4 col-lg-3 col-form-label">Gender</label>
                                 <div class="col-md-8 col-lg-9">
                                     <select class="form-select" id="Gender" aria-label="Default select example">
-                                        <option selected>Select Gender</option>
-                                        <option value="m">Male</option>
+                                        <option selected value="m">Male</option>
                                         <option value="f">Female</option>
                                         <option value="t">Transgender</option>
                                     </select>
@@ -135,7 +132,7 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-12 text-end">
-                                    <input type="button" class="btn btn-primary" value="Save Changes" id="btnStudent" />
+                                    <input type="button" class="btn btn-primary" value="Save Changes" id="btnSaveStudent" />
                                 </div>
                             </div>
 

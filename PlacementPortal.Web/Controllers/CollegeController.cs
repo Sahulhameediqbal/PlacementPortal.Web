@@ -5,6 +5,10 @@ using PlacementPortal.Application.Services;
 using PlacementPortal.Domain.Entities;
 using PlacementPortal.Model.Models;
 using PlacementPortal.Web.Models;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
+using System.Web.Http.Results;
+
 
 namespace PlacementPortal.Web.Controllers
 {
@@ -31,12 +35,21 @@ namespace PlacementPortal.Web.Controllers
         /// </summary>
         /// <returns>All College Information</returns>
         [HttpGet]
-        public IActionResult College()
+        public async Task<IActionResult> College()
         {
-            List<CollegeModel> lstCollege = new List<CollegeModel>();
-            lstCollege = _collegeService.GetAll().Result;
+            //List<CollegeModel> lstCollege = new List<CollegeModel>();
+            //lstCollege = await GetAllCollege();
 
-            return View("College", lstCollege);
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult GetAllCollege()
+        {
+            StudentInfoModel student = new StudentInfoModel();
+            var lstCollege = _collegeService.GetAll().Result;
+            student.Colleges = lstCollege;
+            return Json(new { data = student.Colleges });
         }
 
         /// <summary>

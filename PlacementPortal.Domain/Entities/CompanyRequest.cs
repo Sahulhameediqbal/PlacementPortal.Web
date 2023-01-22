@@ -4,7 +4,7 @@ namespace PlacementPortal.Domain.Entities
 {
     public class CompanyRequest : EntityBase
     {
-        public string Code { get; set; } = null!;
+        //public string Code { get; set; } = null!;
         public Guid CompanyId { get; set; }
         public Guid CollegeId { get; set; }
         public DateTimeOffset RecuritmentDate { get; set; }
