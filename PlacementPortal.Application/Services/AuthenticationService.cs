@@ -82,11 +82,9 @@ namespace PlacementPortal.Application.Services
             user.CreatedBy = user.Id;
             user.CreatedDate = _dateTimeProvider.DateTimeOffsetNow;
             user.ModifiedBy = user.Id;
-            user.ModifiedDate = _dateTimeProvider.DateTimeOffsetNow;
+            user.ModifiedDate = _dateTimeProvider.DateTimeOffsetNow;            
 
             await _unitOfWork.UserRepository.Add(user);
-
-            var existingUser1 = await _unitOfWork.UserRepository.FindAsync(x => x.Email == register.Email);
 
             if (register.UserTypeId == UserTypeEnum.Company.GetEnumGuid())
             {

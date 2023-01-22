@@ -77,35 +77,12 @@ namespace PlacementPortal.Web.Controllers
                 var message = string.Join(" | ", ModelState.Values
                    .SelectMany(v => v.Errors)
                    .Select(e => e.ErrorMessage));
-                //reponse.Message = message;
+                response.Message = message;
             }
 
             var result = await _authenticationService.Register(registerData);
 
-            if (registerData != null)
-            {
-                response.UserType = result.UserType;
-                HttpContext.Session.SetString("UserType", result.UserType);
-
-                if (result.UserType == PlacementPortal.Domain.Enum.UserTypeEnum.Company.ToString())
-                {
-                    var CompanyId = new Guid("DC43B2F5-0978-49DE-AE7B-977A4425BF73");                    
-                    HttpContext.Session.SetString("ComapanyId", CompanyId.ToString());
-                }
-                else 
-                {
-                    var CollegeId = new Guid("22925928-880A-4261-BC6B-ABA4BB3FE5FA");
-                    HttpContext.Session.SetString("ComapanyId", CollegeId.ToString());
-                }
-                response.Status = true;                
-                
-            }
-            else
-            {
-                response.Status = false;
-                response.Message = "Something went wrong. Please try again later!";
-            }
-            return Json(response);
+            return Json(result);
         }
     }
 }

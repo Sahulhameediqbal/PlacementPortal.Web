@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure;
+using Microsoft.AspNetCore.Mvc;
 using PlacementPortal.Application.Interfaces.Services;
 using PlacementPortal.Model.Models;
 using PlacementPortal.Web.Models;
@@ -38,25 +39,32 @@ namespace PlacementPortal.Web.Controllers
         [HttpPost]
         public async Task<JsonResult> CheckUser([FromBody] LoginModel login)
         {
+            AuthenticationModel response = new AuthenticationModel();
             var result = await _authenticationService.Login(login);
 
-            LoginStatus status = new LoginStatus();
-            if (login != null)
+            if (result != null)
             {
-                status.Id = result.Id;
-                status.Email = result.Email;
-                status.Success = true;
-                status.TargetURL = "";                
-                status.Message = "Login attempt successful!";
-                //Session["UserName"] = mdlLogin.Email;
+                response.UserType = result.UserType;
+                HttpContext.Session.SetString("UserType", result.UserType);
+
+                if (result.UserType == PlacementPortal.Domain.Enum.UserTypeEnum.Company.ToString())
+                {
+                    var CompanyId = new Guid("DC43B2F5-0978-49DE-AE7B-977A4425BF73");
+                    HttpContext.Session.SetString("ComapanyId", CompanyId.ToString());
+                }
+                else
+                {
+                    var CollegeId = new Guid("22925928-880A-4261-BC6B-ABA4BB3FE5FA");
+                    HttpContext.Session.SetString("ComapanyId", CollegeId.ToString());
+                }
+                response.Status = true;
+
             }
             else
             {
-                status.Success = false;
-                status.Message = "Invalid UserID or Password!";
-                status.TargetURL = "";
+                response.Status = false;
             }
-            return Json(status);
+            return Json(response);
         }
     }
 }

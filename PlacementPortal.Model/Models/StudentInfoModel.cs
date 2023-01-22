@@ -18,5 +18,7 @@
         public string Address { get; set; } = null!;
         public bool IsActive { get; set; }
         public List<CollegeModel> Colleges { get; set; }
+        public List<StudentInfoModel> Courses { get; set; }
+        public List<StudentInfoModel> Department { get; set; }
     }
 }
