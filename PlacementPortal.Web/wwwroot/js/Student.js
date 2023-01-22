@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
-    //GetAllCollege();
-    //GetAllCourse();
-    //GetAllDepartment();
+    GetAllCollege();
+    GetAllCourse();
+    GetAllDepartment();
 });
 
 function GetAllCollege() {
