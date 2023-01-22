@@ -72,7 +72,6 @@ namespace PlacementPortal.Application.Services
             {
                 await Update(model);
             }
-
             await UnitOfWork.Save();
         }
 

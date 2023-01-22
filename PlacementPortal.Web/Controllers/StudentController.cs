@@ -12,7 +12,8 @@ namespace PlacementPortal.Web.Controllers
     {
         #region Variable Declartion
         private readonly IStudentInfoService _studentInfoService;
-        private readonly IMapper _mapper; 
+        private readonly IMapper _mapper;
+        private readonly ICollegeService _collegeService;
         #endregion
 
         /// <summary>
@@ -20,10 +21,11 @@ namespace PlacementPortal.Web.Controllers
         /// </summary>
         /// <param name="studentInfoService"></param>
         /// <param name="mapper"></param>
-        public StudentController(IStudentInfoService studentInfoService, IMapper mapper) 
+        public StudentController(IStudentInfoService studentInfoService, IMapper mapper, ICollegeService collegeService) 
         {
             _studentInfoService = studentInfoService;
             _mapper= mapper;
+            _collegeService = collegeService;
         }
 
         /// <summary>
@@ -38,6 +40,24 @@ namespace PlacementPortal.Web.Controllers
             return View("Student");
         }
 
+        [HttpGet]
+        public JsonResult GetAllCourse()
+        {
+            StudentInfoModel student = new StudentInfoModel();
+            var lstCollege = _collegeService.GetAll().Result;
+            student.Colleges = lstCollege;
+            return Json(new { data = student.Colleges });
+        }
+
+        [HttpGet]
+        public JsonResult GetAllDepartment()
+        {
+            StudentInfoModel student = new StudentInfoModel();
+            var lstCollege = _collegeService.GetAll().Result;
+            student.Colleges = lstCollege;
+            return Json(new { data = student.Colleges });
+        }
+
         /// <summary>
         /// Load Studen Page for adding new Student
         /// </summary>
@@ -45,9 +65,13 @@ namespace PlacementPortal.Web.Controllers
         [HttpGet]
         public IActionResult AddStudent()
         {
-            return View("AddStudent");
+            StudentInfoModel student = new StudentInfoModel();
+            var lstCollege = _collegeService.GetAll().Result;
+            student.Colleges = lstCollege;
+            return View("AddStudent", student);
         }
 
+        
 
         /// <summary>
         /// Save Student information

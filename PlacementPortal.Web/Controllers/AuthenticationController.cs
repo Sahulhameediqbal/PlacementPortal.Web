@@ -40,10 +40,11 @@ namespace PlacementPortal.Web.Controllers
         {
             var result = await _authenticationService.Login(login);
 
-            //LogIn / Registered/Dashboard /Profile
             LoginStatus status = new LoginStatus();
             if (login != null)
-            {                
+            {
+                status.Id = result.Id;
+                status.Email = result.Email;
                 status.Success = true;
                 status.TargetURL = "";                
                 status.Message = "Login attempt successful!";

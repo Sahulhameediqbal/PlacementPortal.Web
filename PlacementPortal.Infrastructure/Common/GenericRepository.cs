@@ -29,7 +29,16 @@ namespace PlacementPortal.Infrastructure.Common
         }
         public async Task<IEnumerable<T>> GetAll()
         {
-            return await _dbContext.Set<T>().ToListAsync();
+            try
+            {
+                return await _dbContext.Set<T>().ToListAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
         }
 
         public async Task Add(T entity)

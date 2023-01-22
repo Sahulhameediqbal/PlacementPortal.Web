@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PlacementPortal.Application.Interfaces.Services;
+using PlacementPortal.Application.Services;
 using PlacementPortal.Domain.Entities;
 using PlacementPortal.Model.Models;
 using PlacementPortal.Web.Models;
@@ -10,7 +12,8 @@ namespace PlacementPortal.Web.Controllers
     public class RegisterController : BaseController
     {
         #region Variable Declaration
-        private readonly IAuthenticationService _authenticationService; 
+        private readonly IAuthenticationService _authenticationService;
+        private readonly IMapper _mapper;
         #endregion
 
         /// <summary>
@@ -47,6 +50,15 @@ namespace PlacementPortal.Web.Controllers
 
             return View("AddRegister");
         }
+
+        //[HttpGet]
+        //public JsonResult GetAllUserType()
+        //{
+        //    UserTypeModel student = new UserTypeModel();
+        //    var lstCollege = _collegeService.GetAll().Result;
+        //    student.Colleges = lstCollege;
+        //    return Json(new { data = student.Colleges });
+        //}
 
         /// <summary>
         /// Save the User Data

@@ -1,4 +1,5 @@
 using PlacementPortal.Application;
+using PlacementPortal.Domain.Entities;
 using PlacementPortal.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,7 +30,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Authentication}/{action=LogIn}");
-    //pattern: "{controller=Home}/{action=Index}/{id?}");
-    //pattern: "{controller=Student}/{action=AddStudent}/{id?}");
-
+    
 app.Run();
