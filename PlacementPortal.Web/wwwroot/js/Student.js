@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     GetAllCollege();
-    //GetAllDepartment();
+    GetAllCourse();
+    GetAllDepartment();
 });
 
 function GetAllCollege() {
@@ -24,6 +25,48 @@ function GetAllCollege() {
     });
 }
 
+function GetAllCollege() {
+    debugger;
+    $.ajax({
+        type: "Get",
+        url: "/Student/GetAllCourse",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+
+        success: function (result) {
+            debugger;
+            $.each(result.data, function (key, value) {
+                $("#CourseId").append($("<option></option>").val(value.id).html(value.name));
+            })
+        },
+        error: function (req, status, error) {
+            alert(error);
+            $("#message").html("Error while Loading Course Details!");
+        }
+    });
+}
+
+function GetAllCollege() {
+    debugger;
+    $.ajax({
+        type: "Get",
+        url: "/Student/GetAllDepartment",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+
+        success: function (result) {
+            debugger;
+            $.each(result.data, function (key, value) {
+                $("#DepartmentId").append($("<option></option>").val(value.id).html(value.name));
+            })
+        },
+        error: function (req, status, error) {
+            alert(error);
+            $("#message").html("Error while Loading Department Details!");
+        }
+    });
+}
+
 $("#btnSaveStudent").click(function () {
 
     if (!validation()) {
@@ -33,6 +76,7 @@ $("#btnSaveStudent").click(function () {
     var studentData = {
         Name: $("#Name").val(),
         CollegeId: $("#CollegeId").val(),
+        CourseId: $("#CourseId").val(),
         DepartmentId: $("#DepartmentId").val(),
         Email: $("#Email").val(),
         PhoneNumber: $("#PhoneNumber").val(),

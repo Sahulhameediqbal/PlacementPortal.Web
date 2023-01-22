@@ -40,6 +40,24 @@ namespace PlacementPortal.Web.Controllers
             return View("Student");
         }
 
+        [HttpGet]
+        public JsonResult GetAllCourse()
+        {
+            StudentInfoModel student = new StudentInfoModel();
+            var lstCollege = _collegeService.GetAll().Result;
+            student.Colleges = lstCollege;
+            return Json(new { data = student.Colleges });
+        }
+
+        [HttpGet]
+        public JsonResult GetAllDepartment()
+        {
+            StudentInfoModel student = new StudentInfoModel();
+            var lstCollege = _collegeService.GetAll().Result;
+            student.Colleges = lstCollege;
+            return Json(new { data = student.Colleges });
+        }
+
         /// <summary>
         /// Load Studen Page for adding new Student
         /// </summary>
