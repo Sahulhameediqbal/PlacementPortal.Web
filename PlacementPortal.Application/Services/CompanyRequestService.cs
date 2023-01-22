@@ -12,7 +12,8 @@ namespace PlacementPortal.Application.Services
     {
         public CompanyRequestService(IUnitOfWork unitOfWork,
                                      IMapper mapper,
-                                     IDateTimeProvider dateTimeProvider) : base(unitOfWork, mapper, dateTimeProvider)
+                                     IDateTimeProvider dateTimeProvider,
+                                     ICurrentUserService currentUserService) : base(unitOfWork, mapper, dateTimeProvider, currentUserService)
         {
         }
 
@@ -46,7 +47,7 @@ namespace PlacementPortal.Application.Services
 
         public async Task<List<CompanyRequestModel>> GetAllCompanyRequest(Guid companyId, Guid collegeId)
         {
-            var response = UnitOfWork.CompanyRequestRepository.Find(x => x.CompanyId == companyId 
+            var response = UnitOfWork.CompanyRequestRepository.Find(x => x.CompanyId == companyId
                                                                         && x.CollegeId == collegeId);
             var companyRequest = Mapper.Map<List<CompanyRequestModel>>(response);
             return companyRequest;
@@ -54,8 +55,8 @@ namespace PlacementPortal.Application.Services
 
         public async Task<CompanyRequestModel> GetCompanyRequest(Guid companyId, Guid collegeId)
         {
-            var response = await UnitOfWork.CompanyRequestRepository.FindAsync(x => x.CompanyId == companyId 
-                                                                                    && x.CollegeId == collegeId 
+            var response = await UnitOfWork.CompanyRequestRepository.FindAsync(x => x.CompanyId == companyId
+                                                                                    && x.CollegeId == collegeId
                                                                                     && x.CollegeResponse == false);
             var companyRequest = Mapper.Map<CompanyRequestModel>(response);
             return companyRequest;
@@ -80,9 +81,9 @@ namespace PlacementPortal.Application.Services
             var companyRequest = Mapper.Map<CompanyRequest>(model);
 
             companyRequest.Id = Guid.NewGuid();
-            companyRequest.CreatedBy = companyRequest.Id;
+            companyRequest.CreatedBy = CurrentUserService.UserId;
             companyRequest.CreatedDate = DateTimeProvider.DateTimeOffsetNow;
-            companyRequest.ModifiedBy = companyRequest.Id;
+            companyRequest.ModifiedBy = CurrentUserService.UserId;
             companyRequest.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
 
             await UnitOfWork.CompanyRequestRepository.Add(companyRequest);
@@ -98,7 +99,7 @@ namespace PlacementPortal.Application.Services
 
             companyRequest = Mapper.Map(model, companyRequest);
 
-            companyRequest.ModifiedBy = companyRequest.Id;
+            companyRequest.ModifiedBy = CurrentUserService.UserId;
             companyRequest.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
 
             UnitOfWork.CompanyRequestRepository.Update(companyRequest);

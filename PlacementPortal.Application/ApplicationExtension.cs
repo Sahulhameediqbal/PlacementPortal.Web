@@ -15,7 +15,7 @@ namespace PlacementPortal.Application
 
             service.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
-            service.AddTransient<IAuthenticationService, AuthenticationService>();
+            service.AddTransient<IAuthenticationCustomService, AuthenticationService>();
             service.AddTransient<IUserService, UserService>();
             service.AddTransient<ICollegeService, CollegeService>();
             service.AddTransient<ICompanyService, CompanyService>();

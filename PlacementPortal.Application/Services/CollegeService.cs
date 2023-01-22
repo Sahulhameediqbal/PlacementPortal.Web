@@ -9,11 +9,13 @@ using PlacementPortal.Model.Models;
 namespace PlacementPortal.Application.Services
 {
     public class CollegeService : BaseService, ICollegeService
-    {
+    {        
         public CollegeService(IUnitOfWork unitOfWork,
                               IMapper mapper,
-                              IDateTimeProvider dateTimeProvider) : base(unitOfWork, mapper, dateTimeProvider)
+                              IDateTimeProvider dateTimeProvider,
+                              ICurrentUserService currentUserService) : base(unitOfWork, mapper, dateTimeProvider, currentUserService)
         {
+            
         }
 
         public async Task<CollegeModel> Get(Guid id)
@@ -50,9 +52,9 @@ namespace PlacementPortal.Application.Services
 
             college.Id = Guid.NewGuid();
             college.IsActive = true;
-            college.CreatedBy = college.Id;
+            college.CreatedBy = CurrentUserService.UserId;
             college.CreatedDate = DateTimeProvider.DateTimeOffsetNow;
-            college.ModifiedBy = college.Id;
+            college.ModifiedBy = CurrentUserService.UserId;
             college.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
 
             await UnitOfWork.CollegeRepository.Add(college);
@@ -68,7 +70,7 @@ namespace PlacementPortal.Application.Services
 
             college = Mapper.Map(model, college);
                            
-            college.ModifiedBy = college.Id;
+            college.ModifiedBy = CurrentUserService.UserId;
             college.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
 
             UnitOfWork.CollegeRepository.Update(college);

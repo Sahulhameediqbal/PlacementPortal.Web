@@ -10,9 +10,10 @@ namespace PlacementPortal.Application.Services
 {
     public class CompanyService : BaseService, ICompanyService
     {
-        public CompanyService(IUnitOfWork unitOfWork,
-                              IMapper mapper,
-                              IDateTimeProvider dateTimeProvider) : base(unitOfWork, mapper, dateTimeProvider)
+        public CompanyService(IUnitOfWork unitOfWork, 
+                              IMapper mapper, 
+                              IDateTimeProvider dateTimeProvider, 
+                              ICurrentUserService currentUserService) : base(unitOfWork, mapper, dateTimeProvider, currentUserService)
         {
         }
 
@@ -50,9 +51,9 @@ namespace PlacementPortal.Application.Services
 
             company.Id = Guid.NewGuid();
             company.IsActive = true;
-            company.CreatedBy = company.Id;
+            company.CreatedBy = CurrentUserService.UserId;
             company.CreatedDate = DateTimeProvider.DateTimeOffsetNow;
-            company.ModifiedBy = company.Id;
+            company.ModifiedBy = CurrentUserService.UserId;
             company.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
 
             await UnitOfWork.CompanyRepository.Add(company);
@@ -68,7 +69,7 @@ namespace PlacementPortal.Application.Services
 
             company = Mapper.Map(model, company);
 
-            company.ModifiedBy = company.Id;
+            company.ModifiedBy = CurrentUserService.UserId;
             company.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
 
             UnitOfWork.CompanyRepository.Update(company);

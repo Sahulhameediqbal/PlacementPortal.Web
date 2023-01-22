@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PlacementPortal.Application.Interfaces.Services;
-using PlacementPortal.Application.Services;
 using PlacementPortal.Model.Models;
 using PlacementPortal.Web.Models;
 
 namespace PlacementPortal.Web.Controllers
 {
+    [Authorize]
     public class CompanyRequestController : BaseController
     {
         #region Variable Declaration

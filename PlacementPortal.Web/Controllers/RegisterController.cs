@@ -1,29 +1,23 @@
 ﻿using AutoMapper;
-using Azure;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PlacementPortal.Application.Interfaces.Services;
-using PlacementPortal.Application.Services;
 using PlacementPortal.Domain.Entities;
 using PlacementPortal.Model.Models;
-using PlacementPortal.Shared.Common;
-using PlacementPortal.Web.Models;
 
 namespace PlacementPortal.Web.Controllers
 {
     public class RegisterController : BaseController
     {
-        #region Variable Declaration
-        private readonly IAuthenticationService _authenticationService;
+       
+        private readonly IAuthenticationCustomService _authenticationService;
         private readonly IMapper _mapper;
-        #endregion
+       
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="authenticationService"></param>
-        public RegisterController(IAuthenticationService authenticationService)
+        public RegisterController(IAuthenticationCustomService authenticationService)
         {
             _authenticationService = authenticationService;
         }

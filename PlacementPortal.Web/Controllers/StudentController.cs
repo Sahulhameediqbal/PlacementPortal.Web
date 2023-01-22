@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PlacementPortal.Application.Interfaces.Services;
-using PlacementPortal.Application.Services;
-using PlacementPortal.Domain.Entities;
 using PlacementPortal.Model.Models;
 using PlacementPortal.Web.Models;
 
 namespace PlacementPortal.Web.Controllers
 {
+    [Authorize]
     public class StudentController : Controller
     {
         #region Variable Declartion
@@ -22,10 +22,10 @@ namespace PlacementPortal.Web.Controllers
         /// </summary>
         /// <param name="studentInfoService"></param>
         /// <param name="mapper"></param>
-        public StudentController(IStudentInfoService studentInfoService, IMapper mapper, ICollegeService collegeService, IUserService userService) 
+        public StudentController(IStudentInfoService studentInfoService, IMapper mapper, ICollegeService collegeService, IUserService userService)
         {
             _studentInfoService = studentInfoService;
-            _mapper= mapper;
+            _mapper = mapper;
             _collegeService = collegeService;
             _userService = userService;
         }
@@ -35,24 +35,24 @@ namespace PlacementPortal.Web.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult Student()
+        public async Task<IActionResult> Student()
         {
             List<StudentInfoModel> lstStudent = new List<StudentInfoModel>();
-            lstStudent = _studentInfoService.GetAll().Result;
+            lstStudent = await _studentInfoService.GetAll();
             return View("Student");
         }
 
         [HttpGet]
-        public JsonResult GetAllCourse()
+        public async Task<JsonResult> GetAllCourse()
         {
-            var lstCourse = _userService.GetCourse().Result;
+            var lstCourse = await _userService.GetCourse();
             return Json(new { data = lstCourse });
         }
 
         [HttpGet]
-        public JsonResult GetAllDepartment()
+        public async Task<JsonResult> GetAllDepartment()
         {
-            var lstDepartment = _userService.GetDepartment().Result;            
+            var lstDepartment = await _userService.GetDepartment();
             return Json(new { data = lstDepartment });
         }
 
@@ -61,15 +61,15 @@ namespace PlacementPortal.Web.Controllers
         /// </summary>
         /// <returns>New Student Page</returns>
         [HttpGet]
-        public IActionResult AddStudent()
+        public async Task<IActionResult> AddStudent()
         {
             StudentInfoModel student = new StudentInfoModel();
-            var lstCollege = _collegeService.GetAll().Result;
+            var lstCollege = await _collegeService.GetAll();
             student.Colleges = lstCollege;
             return View("AddStudent", student);
         }
 
-        
+
 
         /// <summary>
         /// Save Student information
@@ -80,12 +80,12 @@ namespace PlacementPortal.Web.Controllers
         public async Task<JsonResult> AddStudent([FromBody] StudentInfoModel studentData)
         {
             Response reponse = new Response();
-            if(studentData == null) 
+            if (studentData == null)
             {
                 return Json(new EmptyResult());
             }
 
-            var studentInfo = _mapper.Map<StudentInfoModel>(studentData);            
+            var studentInfo = _mapper.Map<StudentInfoModel>(studentData);
             await _studentInfoService.Save(studentInfo);
 
             if (studentData != null)

@@ -7,5 +7,8 @@ namespace PlacementPortal.Application.Interfaces.Services
         Task<List<UserTypeModel>> GetUserType();
         Task<List<DepartmentModel>> GetDepartment();
         Task<List<CourseModel>> GetCourse();
+        Task<List<StudentStatusModel>> GetStudentStatus();
+        Task<List<InterviewStatusModel>> GetInterviewStatus();
+
     }
 }

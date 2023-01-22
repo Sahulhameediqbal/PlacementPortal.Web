@@ -10,9 +10,10 @@ namespace PlacementPortal.Application.Services
 {
     public class PlacementProcessService : BaseService, IPlacementProcessService
     {
-        public PlacementProcessService(IUnitOfWork unitOfWork,
-                                       IMapper mapper,
-                                       IDateTimeProvider dateTimeProvider) : base(unitOfWork, mapper, dateTimeProvider)
+        public PlacementProcessService(IUnitOfWork unitOfWork, 
+                                       IMapper mapper, 
+                                       IDateTimeProvider dateTimeProvider, 
+                                       ICurrentUserService currentUserService) : base(unitOfWork, mapper, dateTimeProvider, currentUserService)
         {
 
         }
@@ -51,9 +52,9 @@ namespace PlacementPortal.Application.Services
 
             placementProcess.Id = Guid.NewGuid();
             placementProcess.IsActive = true;
-            placementProcess.CreatedBy = placementProcess.Id;
+            placementProcess.CreatedBy = CurrentUserService.UserId;
             placementProcess.CreatedDate = DateTimeProvider.DateTimeOffsetNow;
-            placementProcess.ModifiedBy = placementProcess.Id;
+            placementProcess.ModifiedBy = CurrentUserService.UserId;
             placementProcess.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
 
             await UnitOfWork.PlacementProcessRepository.Add(placementProcess);
@@ -69,7 +70,7 @@ namespace PlacementPortal.Application.Services
 
             placementProcess = Mapper.Map(model, placementProcess);
 
-            placementProcess.ModifiedBy = placementProcess.Id;
+            placementProcess.ModifiedBy = CurrentUserService.UserId;
             placementProcess.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
 
             UnitOfWork.PlacementProcessRepository.Update(placementProcess);

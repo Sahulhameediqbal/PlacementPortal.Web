@@ -9,7 +9,7 @@ using PlacementPortal.Shared.Common;
 
 namespace PlacementPortal.Application.Services
 {
-    public class AuthenticationService : IAuthenticationService
+    public class AuthenticationService : IAuthenticationCustomService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -60,8 +60,11 @@ namespace PlacementPortal.Application.Services
                     }
                 }
             }
+
+
             return authenticationModel;
         }
+
 
         public async Task<AuthenticationModel> Register(RegisterModel register)
         {
@@ -82,7 +85,7 @@ namespace PlacementPortal.Application.Services
             user.CreatedBy = user.Id;
             user.CreatedDate = _dateTimeProvider.DateTimeOffsetNow;
             user.ModifiedBy = user.Id;
-            user.ModifiedDate = _dateTimeProvider.DateTimeOffsetNow;            
+            user.ModifiedDate = _dateTimeProvider.DateTimeOffsetNow;
 
             await _unitOfWork.UserRepository.Add(user);
 
@@ -123,7 +126,7 @@ namespace PlacementPortal.Application.Services
 
                 throw;
             }
-            
+
 
             var authenticationModel = _mapper.Map<AuthenticationModel>(user);
             return authenticationModel;

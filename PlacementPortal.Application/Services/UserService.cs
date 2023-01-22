@@ -9,9 +9,10 @@ namespace PlacementPortal.Application.Services
 {
     public class UserService : BaseService, IUserService
     {
-        public UserService(IUnitOfWork unitOfWork,
+        public UserService(IUnitOfWork unitOfWork, 
                            IMapper mapper,
-                           IDateTimeProvider dateTimeProvider) : base(unitOfWork, mapper, dateTimeProvider)
+                           IDateTimeProvider dateTimeProvider, 
+                           ICurrentUserService currentUserService) : base(unitOfWork, mapper, dateTimeProvider, currentUserService)
         {
 
         }

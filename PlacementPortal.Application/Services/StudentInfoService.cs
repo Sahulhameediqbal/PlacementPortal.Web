@@ -10,9 +10,10 @@ namespace PlacementPortal.Application.Services
 {
     public class StudentInfoService : BaseService, IStudentInfoService
     {
-        public StudentInfoService(IUnitOfWork unitOfWork,
-                                  IMapper mapper,
-                                  IDateTimeProvider dateTimeProvider) : base(unitOfWork, mapper, dateTimeProvider)
+        public StudentInfoService(IUnitOfWork unitOfWork, 
+                                  IMapper mapper, 
+                                  IDateTimeProvider dateTimeProvider, 
+                                  ICurrentUserService currentUserService) : base(unitOfWork, mapper, dateTimeProvider, currentUserService)
         {
         }
 
@@ -57,9 +58,9 @@ namespace PlacementPortal.Application.Services
 
             studentInfo.Id = Guid.NewGuid();
             studentInfo.IsActive = true;
-            studentInfo.CreatedBy = studentInfo.Id;
+            studentInfo.CreatedBy = CurrentUserService.UserId;
             studentInfo.CreatedDate = DateTimeProvider.DateTimeOffsetNow;
-            studentInfo.ModifiedBy = studentInfo.Id;
+            studentInfo.ModifiedBy = CurrentUserService.UserId;
             studentInfo.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
 
             await UnitOfWork.StudentInfoRepository.Add(studentInfo);
@@ -75,7 +76,7 @@ namespace PlacementPortal.Application.Services
 
             studentInfo = Mapper.Map(model, studentInfo);
 
-            studentInfo.ModifiedBy = studentInfo.Id;
+            studentInfo.ModifiedBy = CurrentUserService.UserId;
             studentInfo.ModifiedDate = DateTimeProvider.DateTimeOffsetNow;
 
             UnitOfWork.StudentInfoRepository.Update(studentInfo);

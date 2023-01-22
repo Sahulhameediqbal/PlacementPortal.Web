@@ -9,13 +9,16 @@ namespace PlacementPortal.Application.Services.Base
         protected IUnitOfWork UnitOfWork;
         protected IMapper Mapper;
         protected IDateTimeProvider DateTimeProvider;
+        protected ICurrentUserService CurrentUserService;
         public BaseService(IUnitOfWork unitOfWork,
                            IMapper mapper,
-                           IDateTimeProvider dateTimeProvider)
+                           IDateTimeProvider dateTimeProvider,
+                           ICurrentUserService currentUserService)
         {
             UnitOfWork = unitOfWork;
             Mapper = mapper;
             DateTimeProvider = dateTimeProvider;
+            CurrentUserService = currentUserService;
         }
     }
 }

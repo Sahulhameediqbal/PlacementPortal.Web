@@ -1,23 +1,19 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PlacementPortal.Application.Interfaces.Services;
-using PlacementPortal.Application.Services;
-using PlacementPortal.Domain.Entities;
 using PlacementPortal.Model.Models;
 using PlacementPortal.Web.Models;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using System.Web.Http.Results;
 
 
 namespace PlacementPortal.Web.Controllers
 {
+    [Authorize]
     public class CollegeController : BaseController
     {
-        #region Variable Declaration
+
         private readonly ICollegeService _collegeService;
-        private readonly IMapper _mapper; 
-        #endregion
+        private readonly IMapper _mapper;
 
         /// <summary>
         /// Constructor
@@ -30,10 +26,7 @@ namespace PlacementPortal.Web.Controllers
             _mapper = mapper;
         }
 
-        /// <summary>
-        /// Load all the College details
-        /// </summary>
-        /// <returns>All College Information</returns>
+        
         [HttpGet]
         public async Task<IActionResult> College()
         {
@@ -43,6 +36,7 @@ namespace PlacementPortal.Web.Controllers
             return View();
         }
 
+        
         [HttpGet]
         public JsonResult GetAllCollege()
         {
@@ -68,7 +62,7 @@ namespace PlacementPortal.Web.Controllers
         /// <param name="collegeData"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<JsonResult> AddCollege([FromBody]CollegeModel collegeData)
+        public async Task<JsonResult> AddCollege([FromBody] CollegeModel collegeData)
         {
             Response reponse = new Response();
             if (collegeData == null)
