@@ -18,15 +18,15 @@ $("#btnLogIn").click(function () {
         type: "POST",
         data: JSON.stringify(data),
         dataType: "json",
-        success: function (status) {
+        success: function (result) {
             debugger;
             alert("Success")
-            $("#message").html(status.message);
-            if (status.success) {
+            $("#message").html(result.message);
+            if (result.status) {
                 window.location.href = "https://localhost:7014/Home/Index";//status.TargetURL;
             }
         },
-        error: function (req, status, error) {
+        error: function (req, result, error) {
             console.log(error);
             $("#message").html("Error while authenticating user credentials!");
             }

@@ -86,6 +86,8 @@ namespace PlacementPortal.Application.Services
 
             await _unitOfWork.UserRepository.Add(user);
 
+            var existingUser1 = await _unitOfWork.UserRepository.FindAsync(x => x.Email == register.Email);
+
             if (register.UserTypeId == UserTypeEnum.Company.GetEnumGuid())
             {
                 var company = _mapper.Map<Company>(register);
@@ -114,8 +116,16 @@ namespace PlacementPortal.Application.Services
 
                 await _unitOfWork.CollegeRepository.Add(college);
             }
+            try
+            {
+                await _unitOfWork.Save();
+            }
+            catch (Exception)
+            {
 
-            await _unitOfWork.Save();
+                throw;
+            }
+            
 
             var authenticationModel = _mapper.Map<AuthenticationModel>(user);
             return authenticationModel;

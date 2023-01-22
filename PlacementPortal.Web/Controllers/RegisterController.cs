@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
+using Azure;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using PlacementPortal.Application.Interfaces.Services;
 using PlacementPortal.Application.Services;
 using PlacementPortal.Domain.Entities;
 using PlacementPortal.Model.Models;
+using PlacementPortal.Shared.Common;
 using PlacementPortal.Web.Models;
 
 namespace PlacementPortal.Web.Controllers
@@ -68,28 +71,41 @@ namespace PlacementPortal.Web.Controllers
         [HttpPost]
         public async Task<JsonResult> AddRegister([FromBody] RegisterModel registerData)
         {
-            Response reponse = new Response();
+            AuthenticationModel response = new AuthenticationModel();
             if (!ModelState.IsValid)
             {
                 var message = string.Join(" | ", ModelState.Values
                    .SelectMany(v => v.Errors)
                    .Select(e => e.ErrorMessage));
-                reponse.Message = message;
+                //reponse.Message = message;
             }
 
             var result = await _authenticationService.Register(registerData);
 
             if (registerData != null)
             {
-                reponse.Success = true;
-                reponse.Message = "Data saved successfully!";
+                response.UserType = result.UserType;
+                HttpContext.Session.SetString("UserType", result.UserType);
+
+                if (result.UserType == PlacementPortal.Domain.Enum.UserTypeEnum.Company.ToString())
+                {
+                    var CompanyId = new Guid("DC43B2F5-0978-49DE-AE7B-977A4425BF73");                    
+                    HttpContext.Session.SetString("ComapanyId", CompanyId.ToString());
+                }
+                else 
+                {
+                    var CollegeId = new Guid("22925928-880A-4261-BC6B-ABA4BB3FE5FA");
+                    HttpContext.Session.SetString("ComapanyId", CollegeId.ToString());
+                }
+                response.Status = true;                
+                
             }
             else
             {
-                reponse.Success = false;
-                reponse.Message = "Something went wrong. Please try again later!";
+                response.Status = false;
+                response.Message = "Something went wrong. Please try again later!";
             }
-            return Json(reponse);
+            return Json(response);
         }
     }
 }
