@@ -30,6 +30,38 @@ namespace PlacementPortal.Application.Services
             return companyRequest;
         }
 
+        public async Task<List<CompanyRequestModel>> GetAllCompany(Guid companyId)
+        {
+            var response = UnitOfWork.CompanyRequestRepository.Find(x => x.CompanyId == companyId);
+            var companyRequest = Mapper.Map<List<CompanyRequestModel>>(response);
+            return companyRequest;
+        }
+
+        public async Task<List<CompanyRequestModel>> GetAllCollege(Guid collegeId)
+        {
+            var response = UnitOfWork.CompanyRequestRepository.Find(x => x.CollegeId == collegeId);
+            var companyRequest = Mapper.Map<List<CompanyRequestModel>>(response);
+            return companyRequest;
+        }
+
+        public async Task<List<CompanyRequestModel>> GetAllCompanyRequest(Guid companyId, Guid collegeId)
+        {
+            var response = UnitOfWork.CompanyRequestRepository.Find(x => x.CompanyId == companyId 
+                                                                        && x.CollegeId == collegeId);
+            var companyRequest = Mapper.Map<List<CompanyRequestModel>>(response);
+            return companyRequest;
+        }
+
+        public async Task<CompanyRequestModel> GetCompanyRequest(Guid companyId, Guid collegeId)
+        {
+            var response = await UnitOfWork.CompanyRequestRepository.FindAsync(x => x.CompanyId == companyId 
+                                                                                    && x.CollegeId == collegeId 
+                                                                                    && x.CollegeResponse == false);
+            var companyRequest = Mapper.Map<CompanyRequestModel>(response);
+            return companyRequest;
+        }
+
+
         public async Task Save(CompanyRequestModel model)
         {
             if (model.Id == Guid.Empty)
@@ -47,7 +79,7 @@ namespace PlacementPortal.Application.Services
         {
             var companyRequest = Mapper.Map<CompanyRequest>(model);
 
-            companyRequest.Id = Guid.NewGuid();           
+            companyRequest.Id = Guid.NewGuid();
             companyRequest.CreatedBy = companyRequest.Id;
             companyRequest.CreatedDate = DateTimeProvider.DateTimeOffsetNow;
             companyRequest.ModifiedBy = companyRequest.Id;
