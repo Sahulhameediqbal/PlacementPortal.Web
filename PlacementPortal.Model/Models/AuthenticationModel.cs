@@ -8,5 +8,7 @@
         public string Name { get; set; } = null!;
         public Guid ComapanyId { get; set; }
         public Guid CollegeId { get; set; }
+        public bool Status { get; set; }
+        public string Message { get; set; }
     }
 }
