@@ -1,6 +1,6 @@
 ﻿$("#btnSaveRegister").click(function () {
     
-
+    $("#message").show();
     if (!validation()) {
         return false;
     }

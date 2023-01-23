@@ -32,7 +32,7 @@ function GetAllCollege() {
 }
 
 $("#btnSaveCollege").click(function () {
-    
+    $("#message").show();
     $("#message").html("Logging in...");
         
     if (!validation()) {

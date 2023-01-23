@@ -89,7 +89,7 @@ function GetAllDepartment() {
 }
 
 $("#btnSaveStudent").click(function () {
-
+    $("#message").show();
     if (!validation()) {
         return false;
     }
