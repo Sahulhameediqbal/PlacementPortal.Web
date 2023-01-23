@@ -25,7 +25,7 @@
         <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                    <div class="col-md-12 align-items-center justify-content-center">
 
                         <div class="d-flex justify-content-center py-4">
                             <a href="index.html" class="logo d-flex align-items-center w-auto">
@@ -43,70 +43,76 @@
                                 </div>
 
                             <!-- Profile Edit Form -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                        <div class="row mb-3">
+                                            <label for="fullName" class="col-md-5 col-form-label">Email</label>
+                                            <div class="col-md-7">
+                                                <input name="fullName" type="email" class="form-control" id="Email">
+                                            </div>
+                                        </div>
 
-                            <div class="row mb-3">
-                                <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="fullName" type="email" class="form-control" id="Email">
+                                        <div class="row mb-3">
+                                            <label for="Password" class="col-md-5 col-form-label">Password</label>
+                                            <div class="col-md-7">
+                                                <input name="Password" type="password" class="form-control" id="Password">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="ConfirmPassword" class="col-md-5 col-form-label">ConfirmPassword</label>
+                                            <div class="col-md-7">
+                                                <input name="ConfirmPassword" type="password" class="form-control" id="ConfirmPassword">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="Name" class="col-md-5 col-form-label">Name</label>
+                                            <div class="col-md-7">
+                                                <input name="Name" type="text" class="form-control" id="Name">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="UserTypeId" class="col-md-5 col-form-label">UserTypeId</label>
+                                            <div class="col-md-7">
+                                                <select class="form-select" id="UserTypeId" aria-label="Default select example">
+                                                    <option selected value="DC43B2F5-0978-49DE-AE7B-977A4425BF73">Company</option>
+                                                    <option value="22925928-880A-4261-BC6B-ABA4BB3FE5FA">College</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                        <div class="row mb-3">
+                                            <label for="Code" class="col-md-5 col-form-label">Code</label>
+                                            <div class="col-md-7">
+                                                <input name="Code" type="text" class="form-control" id="Code">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="PhoneNumber" class="col-md-5 col-form-label">PhoneNumber</label>
+                                            <div class="col-md-7">
+                                                <input name="PhoneNumber" type="number" class="form-control" id="PhoneNumber">
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="Address" class="col-md-5 col-form-label">Address</label>
+                                            <div class="col-md-7">
+                                                <textarea name="Address" class="form-control" id="Address" style="height: 100px"></textarea>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
-                                <label for="Password" class="col-md-4 col-lg-3 col-form-label">Password</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="Password"  type="password" class="form-control" id="Password">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="ConfirmPassword" class="col-md-4 col-lg-3 col-form-label">ConfirmPassword</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="ConfirmPassword" type="password" class="form-control" id="ConfirmPassword">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="Name" class="col-md-4 col-lg-3 col-form-label">Name</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="Name" type="text" class="form-control" id="Name">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="UserTypeId" class="col-md-4 col-lg-3 col-form-label">UserTypeId</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <select class="form-select" id="UserTypeId" aria-label="Default select example">
-                                        <option selected value="DC43B2F5-0978-49DE-AE7B-977A4425BF73">Company</option>
-                                        <option value="22925928-880A-4261-BC6B-ABA4BB3FE5FA">College</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="Code" class="col-md-4 col-lg-3 col-form-label">Code</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="Code" type="text" class="form-control" id="Code">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="PhoneNumber" class="col-md-4 col-lg-3 col-form-label">PhoneNumber</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <input name="PhoneNumber" type="number" class="form-control" id="PhoneNumber">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
-                                <div class="col-md-8 col-lg-9">
-                                    <textarea name="Address" class="form-control" id="Address" style="height: 100px"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-12 text-end">
-                                    <input type="button" class="btn btn-primary" value="Save Changes" id="btnSaveRegister" />
-                                </div>
+                            <div class="row my-3">
+                                    <div class="col-md-12 text-center">
+                                    <input type="button" class="btn btn-primary" value="Register" id="btnSaveRegister" />
+                                    </div>
+                                    <div class="col-md-12 mt-3 text-center">
+                                        <p class="small mb-0">Already have an account? <a href="~/Authentication/LogIn">Log in</a></p>
+                                    </div>
                             </div>
 
                             <!-- End Profile Edit Form -->
@@ -114,7 +120,7 @@
                             </div>
                         </div>
 
-                        <div class="credits">
+                        <div class="credits text-center">
                             <!-- All the links in the footer should remain intact. -->
                             <!-- You can delete the links only if you purchased the pro version. -->
                             <!-- Licensing information: https://getbootstrap.com/license/ -->
