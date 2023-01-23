@@ -33,6 +33,66 @@ function GetAllCompanyRequest() {
     });
 }
 
+function GetAllCollege() {
+
+    $.ajax({
+        type: "Get",
+        url: "/College/GetAllCollege",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+
+        success: function (result) {
+
+            $.each(result.data, function (key, value) {
+                $("#CollegeId").append($("<option></option>").val(value.id).html(value.name));
+            })
+        },
+        error: function (req, status, error) {
+            $("#message").html("Error while Loading College Details!");
+        }
+    });
+}
+
+function GetAllCompany() {
+
+    $.ajax({
+        type: "Get",
+        url: "/CompanyRequest/GetAllCompany",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+
+        success: function (result) {
+
+            $.each(result.data, function (key, value) {
+                $("#CompanyId").append($("<option></option>").val(value.id).html(value.name));
+            })
+        },
+        error: function (req, status, error) {
+            $("#message").html("Error while Loading Company Details!");
+        }
+    });
+}
+
+function GetAllDepartment() {
+
+    $.ajax({
+        type: "Get",
+        url: "/Student/GetAllDepartment",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+
+        success: function (result) {
+
+            $.each(result.data, function (key, value) {
+                $("#DepartmentId").append($("<option></option>").val(value.id).html(value.name));
+            })
+        },
+        error: function (req, status, error) {
+            $("#message").html("Error while Loading Department Details!");
+        }
+    });
+}
+
 $("#btnSaveComapnyRequest").click(function () {
     $("#message").html("Logging in...");
 

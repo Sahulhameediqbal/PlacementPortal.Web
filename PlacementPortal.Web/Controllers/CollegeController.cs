@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PlacementPortal.Application.Interfaces.Services;
 using PlacementPortal.Model.Models;
+using PlacementPortal.Web.Common;
 using PlacementPortal.Web.Models;
 
 
@@ -69,7 +70,7 @@ namespace PlacementPortal.Web.Controllers
             {
                 return Json(new EmptyResult());
             }
-
+            
             var collegeInfo = _mapper.Map<CollegeModel>(collegeData);
             await _collegeService.Save(collegeInfo);
 

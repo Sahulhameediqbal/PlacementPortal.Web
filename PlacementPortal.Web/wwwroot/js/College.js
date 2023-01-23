@@ -67,6 +67,8 @@ $("#btnSaveCollege").click(function () {
 
 function validation() {
     var isValid = true;
+    var mailId = $("#Email").val();
+
     if ($("#Code").val() == '') {        
         $("#message").html("Please enter Code");
         isValid = false;
@@ -75,7 +77,7 @@ function validation() {
         $("#message").html("Please enter Name");
         isValid = false;
     }
-    else if ($("#Email").val() == '') {
+    else if (mailId == '') {
         $("#message").html("Please enter Email");
         isValid = false;
     }
@@ -100,6 +102,7 @@ function ClearControls() {
     $("#Email").val('');
     $("#PhoneNumber").val('');
     $("#Address").val('');
+    $("#message").val('');
 }
 
 function IsEmail(email) {

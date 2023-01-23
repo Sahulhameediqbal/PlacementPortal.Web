@@ -43,13 +43,22 @@ namespace PlacementPortal.Application.Services
                 await Update(model);
             }
 
-            await UnitOfWork.Save();
+            try
+            {
+                await UnitOfWork.Save();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         private async Task Add(CollegeModel model)
         {
             var college = Mapper.Map<College>(model);
-
+            college.UserId= CurrentUserService.UserId;
             college.Id = Guid.NewGuid();
             college.IsActive = true;
             college.CreatedBy = CurrentUserService.UserId;

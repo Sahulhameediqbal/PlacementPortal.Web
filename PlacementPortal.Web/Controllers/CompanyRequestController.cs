@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PlacementPortal.Application.Interfaces.Services;
+using PlacementPortal.Application.Services;
 using PlacementPortal.Model.Models;
 using PlacementPortal.Web.Models;
 
@@ -12,6 +13,7 @@ namespace PlacementPortal.Web.Controllers
     {
         #region Variable Declaration
         private readonly ICompanyRequestService _companyRequestService;
+        private readonly ICompanyService _companyService;
         private readonly IMapper _mapper;
         #endregion
 
@@ -19,9 +21,10 @@ namespace PlacementPortal.Web.Controllers
         /// 
         /// </summary>
         /// <param name="companyRequestService"></param>
-        public CompanyRequestController(ICompanyRequestService companyRequestService, IMapper mapper)
+        public CompanyRequestController(ICompanyRequestService companyRequestService, ICompanyService companyService, IMapper mapper)
         {
             _companyRequestService = companyRequestService;
+            _companyService = companyService;
             _mapper = mapper;
         }
 
@@ -31,6 +34,17 @@ namespace PlacementPortal.Web.Controllers
             //List<CompanyRequestModel> list = new List<CompanyRequestModel>();
             //list = _companyRequestService.GetAll().Result;
             return View("CompanyRequest");
+        }
+
+        /// <summary>
+        /// Load All Company 
+        /// </summary>
+        /// <returns>List of Student</returns>
+        [HttpGet]
+        public JsonResult GetAllCompany()
+        {
+            var lstCompany = _companyService.GetAll().Result;
+            return Json(new { data = lstCompany });
         }
 
         [HttpGet]

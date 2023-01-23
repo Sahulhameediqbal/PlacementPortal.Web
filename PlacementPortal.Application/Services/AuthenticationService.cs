@@ -117,16 +117,7 @@ namespace PlacementPortal.Application.Services
 
                 await _unitOfWork.CollegeRepository.Add(college);
             }
-            try
-            {
-                await _unitOfWork.Save();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
+            await _unitOfWork.Save();
 
             var authenticationModel = _mapper.Map<AuthenticationModel>(user);
             return authenticationModel;

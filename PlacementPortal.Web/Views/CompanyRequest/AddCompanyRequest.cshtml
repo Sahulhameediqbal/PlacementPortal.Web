@@ -37,9 +37,7 @@
                             <div class="row mb-3">
                                 <label for="CollegeId" class="col-md-4 col-lg-3 col-form-label">CompanyId</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <select class="form-select" id="CompanyId" aria-label="Default select example">
-                                        <option value="4337DA3B-6908-4B82-BDC0-153120640082" selected="selected">Genpact</option>
-                                        <option value="DE4AF0CB-69EE-48C8-B650-57E007B6BEBD">Rencata</option>
+                                    <select class="form-select" id="CompanyId" aria-label="Default select example">                                        
                                     </select>
                                 </div>
                             </div>
@@ -47,9 +45,7 @@
                             <div class="row mb-3">
                                 <label for="DepartmentId" class="col-md-4 col-lg-3 col-form-label">CollegeId</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <select class="form-select" id="CollegeId" aria-label="Default select example">
-                                        <option value="B554AEE3-82F3-4264-B122-6EE5A75106EB" selected="selected">SRM Institute of Science and Technology</option>
-                                        <option value="65533C32-7AFA-4ABD-A698-963E303885C1">Loyola College (Autonomous) </option>
+                                    <select class="form-select" id="CollegeId" aria-label="Default select example">                                        
                                     </select>
                                 </div>
                             </div>
@@ -64,10 +60,7 @@
                             <div class="row mb-3">
                                 <label for="DepartmentId" class="col-md-4 col-lg-3 col-form-label">DepartmentId</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <select class="form-select" id="DepartmentId" aria-label="Default select example">
-                                        <option value="6FF38DB9-4FE2-46E7-8FA9-4B01A812A4C1" selected="selected">Information Technology</option>
-                                        <option value="EE3FC92B-2AEA-42A7-BC3A-4EFF2FC5F072">EEE</option>
-                                        <option value="56E6A60A-DEAD-4C9A-A22F-8887E84EB04E">Civil</option>
+                                    <select class="form-select" id="DepartmentId" aria-label="Default select example">                                        
                                     </select>
                                 </div>
                             </div>
@@ -148,3 +141,11 @@
 <script src="~/js/main.js"></script>
 
 <script src="~/js/CompanyRequest.js"></script>
+
+<script>
+    $(document).ready(function () {
+        GetAllCompany();
+        GetAllCollege();
+        GetAllDepartment();
+    });
+</script>

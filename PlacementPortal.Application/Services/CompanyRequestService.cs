@@ -73,7 +73,15 @@ namespace PlacementPortal.Application.Services
             {
                 await Update(model);
             }
-            await UnitOfWork.Save();
+            try
+            {
+                await UnitOfWork.Save();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
 
         private async Task Add(CompanyRequestModel model)
