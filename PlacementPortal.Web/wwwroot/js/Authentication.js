@@ -23,7 +23,7 @@ $("#btnLogIn").click(function () {
             alert("Success")
             $("#message").html(result.message);
             if (result.status) {
-                window.location.href = "~/Home/Index";//status.TargetURL;
+                window.location.href = "/Home/Index";//status.TargetURL;
             }
         },
         error: function (req, result, error) {
