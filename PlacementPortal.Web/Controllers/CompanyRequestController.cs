@@ -49,8 +49,9 @@ namespace PlacementPortal.Web.Controllers
 
         [HttpGet]
         public JsonResult GetAllCompanyRequest()
-        {           
-            var lstCompanyRequest = _companyRequestService.GetAll().Result;
+        {
+            var lstCompanyRequest = "";
+            //var lstCompanyRequest = _companyRequestService.GetAll().Result;
             return Json(new { data = lstCompanyRequest });
         }
 
