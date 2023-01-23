@@ -82,5 +82,11 @@ namespace PlacementPortal.Web.Controllers
                     IsPersistent = true
                 });
         }
+
+        [HttpGet]
+        public ActionResult SignOut()
+        { 
+            return RedirectToAction("LogIn");
+        }
     }
 }

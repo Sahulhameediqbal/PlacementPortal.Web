@@ -54,8 +54,16 @@ namespace PlacementPortal.Application.Services
             {
                 await Update(model);
             }
+            try
+            {
+                await UnitOfWork.Save();
+            }
+            catch (Exception)
+            {
 
-            await UnitOfWork.Save();
+                throw;
+            }
+            
         }
 
         private async Task Add(StudentInfoModel model)

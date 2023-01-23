@@ -1,11 +1,6 @@
-﻿$(document).ready(function () {
-    GetAllCollege();
-    GetAllCourse();
-    GetAllDepartment();
-});
-
+﻿
 function GetAllCollege() {
-    debugger;
+    
     $.ajax({
         type: "Get",
         url: "/College/GetAllCollege",
@@ -13,20 +8,19 @@ function GetAllCollege() {
         contentType: "application/json; charset=utf-8",
 
         success: function (result) {
-            debugger;
+            
             $.each(result.data, function (key, value) {
                 $("#CollegeId").append($("<option></option>").val(value.id).html(value.name));
             })
         },
         error: function (req, status, error) {
-            alert(error);
             $("#message").html("Error while Loading College Details!");
         }
     });
 }
 
 function GetAllCourse() {
-    debugger;
+    
     $.ajax({
         type: "Get",
         url: "/Student/GetAllCourse",
@@ -34,20 +28,19 @@ function GetAllCourse() {
         contentType: "application/json; charset=utf-8",
 
         success: function (result) {
-            debugger;
+            
             $.each(result.data, function (key, value) {
                 $("#CourseId").append($("<option></option>").val(value.id).html(value.name));
             })
         },
         error: function (req, status, error) {
-            alert(error);
             $("#message").html("Error while Loading Course Details!");
         }
     });
 }
 
 function GetAllDepartment() {
-    debugger;
+    
     $.ajax({
         type: "Get",
         url: "/Student/GetAllDepartment",
@@ -55,13 +48,12 @@ function GetAllDepartment() {
         contentType: "application/json; charset=utf-8",
 
         success: function (result) {
-            debugger;
+            
             $.each(result.data, function (key, value) {
                 $("#DepartmentId").append($("<option></option>").val(value.id).html(value.name));
             })
         },
         error: function (req, status, error) {
-            alert(error);
             $("#message").html("Error while Loading Department Details!");
         }
     });
@@ -80,7 +72,7 @@ $("#btnSaveStudent").click(function () {
         DepartmentId: $("#DepartmentId").val(),
         Email: $("#Email").val(),
         PhoneNumber: $("#PhoneNumber").val(),
-        Rollumber: $("#Rollumber").val(),
+        RollNumber: $("#RollNumber").val(),
         Gender: $("#Gender").val(),
         DOB: $("#DOB").val(),
         CourseStart: $("#CourseStart").val(),
@@ -98,12 +90,11 @@ $("#btnSaveStudent").click(function () {
         data: JSON.stringify(studentData),
         
         success: function (status) {
-            debugger;
+            
             ClearControls();
             $("#message").html(status.message);
         },
         error: function (req, status, error) {
-            alert(error);
             $("#message").html("Error while authenticating user credentials!");
         }
     });
@@ -124,8 +115,8 @@ function validation() {
         $("#message").html("Please enter PhoneNumber");
         isValid = false;
     }
-    else if ($("#Rollumber").val() == '') {
-        $("#message").html("Please enter Rollumber");
+    else if ($("#RollNumber").val() == '') {
+        $("#message").html("Please enter RollNumber");
         isValid = false;
     }
     else if ($("#DOB").val() == '') {
@@ -143,9 +134,12 @@ function ClearControls() {
     $("#Name").val('');
     $("#Email").val('');
     $("#PhoneNumber").val('');
-    $("#Rollumber").val('');
+    $("#RollNumber").val('');
     $("#DOB").val('');
     $("#Address").val('');
+    $("#CourseStart").val('');
+    $("#CourseEnd").val('');
+    $("#CGPA").val('');
 }
 
 $('#DOB').bind("cut copy paste", function (e) {

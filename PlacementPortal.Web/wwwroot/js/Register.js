@@ -1,5 +1,5 @@
 ﻿$("#btnSaveRegister").click(function () {
-    debugger;
+    
 
     if (!validation()) {
         return false;
@@ -26,7 +26,6 @@
             window.location.href = "/Authentication/LogIn";
         },
         error: function (req, status, error) {
-            alert(error);
             $("#message").html("Error while Register the User");
         }
     });
@@ -90,7 +89,7 @@ function ClearControls() {
     $("#Password").val('');
     $("#ConfirmPassword").val('');
     $("#Name").val('');
-    $("#Rollumber").val('');
+    $("#RollNumber").val('');
     $("#Code").val('');    
     $("#PhoneNumber").val('');    
     $("#Address").val('');

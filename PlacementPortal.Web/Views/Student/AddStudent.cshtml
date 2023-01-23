@@ -46,7 +46,11 @@
                             <div class="row mb-3">
                                 <label for="CourseId" class="col-md-4 col-lg-3 col-form-label">Course</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <select class="form-select" id="CourseId" aria-label="Default select example"></select>
+                                    <select class="form-select" id="CourseId" aria-label="Default select example">                                        
+                                        <option value="CB2BE2CF-14A6-48F4-ACA8-0AE1F0DEA04E" selected="selected">B.Sc</option>
+                                        <option value="183900C2-5FF2-4638-9F26-0F7A92E2FA7B">ME/M.Tech</option>
+                                        <option value="80441C3F-4559-49E7-AAC0-3DF693363EEB">BE/B.Tech</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -72,9 +76,9 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="Rollumber" class="col-md-4 col-lg-3 col-form-label">Rollumber</label>
+                                <label for="RollNumber" class="col-md-4 col-lg-3 col-form-label">RollNumber</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="job" type="text" class="form-control" id="Rollumber" maxlength="10">
+                                    <input name="job" type="text" class="form-control" id="RollNumber" maxlength="10">
                                 </div>
                             </div>
 
@@ -166,3 +170,11 @@
 
 <script src="~/js/Student.js"></script>
 <script src="~/js/commonjs.js"></script>
+
+<script>
+$(document).ready(function () {
+    GetAllCollege();
+    //GetAllCourse();
+    GetAllDepartment();
+});
+</script>

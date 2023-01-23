@@ -1,5 +1,5 @@
 ﻿function allowNumber(event) {
-    debugger;
+    
     // Allow only backspace and delete
     if (event.keyCode == 46 || event.keyCode == 8) {
         // let it happen, don't do anything
@@ -13,7 +13,7 @@
 }
 
 function allowAlphabetsAndSpaces(value) {
-    debugger;
+    
     var pattern = /^[a-zA-Z ]+$/;
     if (!pattern.test(value) && value != '') {
         return false;

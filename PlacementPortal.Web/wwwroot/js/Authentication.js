@@ -1,6 +1,6 @@
 ﻿
 $("#btnLogIn").click(function () {
-    debugger;
+    
     $("#message").html("Logging in...");
 
     if (!validation()) {
@@ -18,9 +18,8 @@ $("#btnLogIn").click(function () {
         type: "POST",
         data: JSON.stringify(data),
         dataType: "json",
-        success: function (result) {
-            debugger;
-            alert("Success")
+        success: function (result) {            
+            
             $("#message").html(result.message);
             if (result.status) {
                 window.location.href = "/Home/Index";//status.TargetURL;

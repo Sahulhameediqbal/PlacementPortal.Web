@@ -42,12 +42,12 @@ namespace PlacementPortal.Web.Controllers
             return View("Student");
         }
 
-        [HttpGet]
-        public async Task<JsonResult> GetAllCourse()
-        {
-            var lstCourse = await _userService.GetCourse();
-            return Json(new { data = lstCourse });
-        }
+        //[HttpGet]
+        //public async Task<JsonResult> GetAllCourse()
+        //{
+        //    var lstCourse = await _userService.GetCourse();
+        //    return Json(new { data = lstCourse });
+        //}
 
         [HttpGet]
         public async Task<JsonResult> GetAllDepartment()

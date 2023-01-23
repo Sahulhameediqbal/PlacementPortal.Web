@@ -3,7 +3,7 @@
 });
 
 function GetAllCollege() {
-    debugger;
+    
     $.ajax({
         type: "Get",
         url: "/College/GetAllCollege",
@@ -11,7 +11,7 @@ function GetAllCollege() {
         contentType: "application/json; charset=utf-8",
 
         success: function (result) {
-            debugger;
+            
             $("#CollegeList tbody").empty();
             $.each(result.data, function (key, value) {
 
@@ -26,14 +26,13 @@ function GetAllCollege() {
             })
         },
         error: function (req, status, error) {
-            alert(error);
             $("#message").html("Error while Loading College Details!");
         }
     });
 }
 
 $("#btnSaveCollege").click(function () {
-    debugger;
+    
     $("#message").html("Logging in...");
         
     if (!validation()) {
@@ -56,12 +55,11 @@ $("#btnSaveCollege").click(function () {
         data: JSON.stringify(collegeData),
         dataType: "json",
         success: function (status) {
-            debugger;
+            
             ClearControls();
             $("#message").html(status.message);
         },
         error: function (req, status, error) {
-            alert(error);
             $("#message").html("Error while inserting College data!");
         }
     });

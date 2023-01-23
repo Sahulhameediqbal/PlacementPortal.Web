@@ -3,7 +3,7 @@
 });
 
 function GetAllCompanyRequest() {
-    debugger;
+    
     $.ajax({
         type: "Get",
         url: "/CompanyRequest/GetAllCompanyRequest",
@@ -11,7 +11,7 @@ function GetAllCompanyRequest() {
         contentType: "application/json; charset=utf-8",
 
         success: function (result) {
-            debugger;
+            
             $("#CompanyRequestList tbody").empty();
             $.each(result.data, function (key, value) {
 
@@ -28,7 +28,6 @@ function GetAllCompanyRequest() {
             })
         },
         error: function (req, status, error) {
-            alert(error);
             $("#message").html("Error while Loading College Details!");
         }
     });
@@ -66,8 +65,6 @@ $("#btnSaveComapnyRequest").click(function () {
             $("#message").html(status.message);
         },
         error: function (req, status, error) {
-            debugger;
-            alert(error);
             $("#message").html("Error while inserting Company Request data!");
         }
     });
