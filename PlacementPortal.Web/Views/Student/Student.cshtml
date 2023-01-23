@@ -39,22 +39,18 @@
                                     </div>
                                 </div>
 
-                                <table class="table table-borderless datatable">
+                                <table class="table table-borderless datatable" id="StudentInfo">
                                     <thead>
                                         <tr>
+                                            <th scope="col">Id</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">College</th>
-                                            <th scope="col">Department</th>
                                             <th scope="col">Email</th>
-                                            <th scope="col">RollNumber</th>
-                                            <th scope="col">DOB</th>
-                                            <th scope="col">CourseStart</th>
-                                            <th scope="col">CourseEnd</th>
+                                            <th scope="col">RollNumber</th>                                            
                                             <th scope="col">CGPA</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        @*<tr>
                                             <th scope="row"><a href="#">#2457</a></th>
                                             <td>Brandon Jacob</td>
                                             <td><a href="#" class="text-primary">At praesentium minu</a></td>
@@ -88,7 +84,7 @@
                                             <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
                                             <td>$165</td>
                                             <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
+                                        </tr>*@
                                     </tbody>
                                 </table>
 
@@ -117,3 +113,10 @@
 <script src="~/js/main.js"></script>
 
 <script src="~/js/Student.js"></script>
+
+<script>
+$(document).ready(function () {
+    GetAllStudent();
+});
+
+</script>

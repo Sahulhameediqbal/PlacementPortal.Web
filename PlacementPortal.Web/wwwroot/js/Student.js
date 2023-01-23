@@ -1,4 +1,33 @@
-﻿
+﻿function GetAllStudent() {
+
+    $.ajax({
+        type: "Get",
+        url: "/Student/GetAllStudent",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+
+        success: function (result) {
+
+            $("#StudentInfo tbody").empty();
+            $.each(result.data, function (key, value) {
+
+                var rows = "<tr>"
+                    + "<td>" + value.id + "</td>"
+                    + "<td>" + value.name + "</td>"
+                    + "<td>" + value.email + "</td>"
+                    + "<td>" + value.rollNumber + "</td>"
+                    + "<td>" + value.cgpa + "</td>"
+                    + "</tr>"
+                $("#StudentInfo tbody").append(rows);
+            })
+        },
+        error: function (req, status, error) {
+            $("#message").html("Error while Loading Student Details!");
+        }
+    });
+}
+
+
 function GetAllCollege() {
     
     $.ajax({
