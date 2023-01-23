@@ -23,7 +23,7 @@
         data: JSON.stringify(registerData),
         dataType: "json",
         success: function (status) {
-            window.location.href = "https://localhost:7014/Authentication/LogIn";
+            window.location.href = "~/Authentication/LogIn";
         },
         error: function (req, status, error) {
             alert(error);
