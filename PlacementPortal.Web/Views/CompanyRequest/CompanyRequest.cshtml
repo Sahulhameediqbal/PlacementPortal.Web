@@ -22,19 +22,13 @@
 
     <div class="pagetitle">
         <h1>Company Request List</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">CompanyRequest</li>
-            </ol>
-        </nav>
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
         <div class="row">
 
             <!-- Left side columns -->
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div class="row">
                     <!-- Recent Sales -->
                     <div class="col-12">
@@ -43,7 +37,9 @@
                             <div class="card-body">
                                 <div>
                                     <h5 class="card-title">Company Request <span> List</span></h5>
-                                    <a class="nav-link collapsed" href="~/CompanyRequest/AddCompanyRequest"><span>Add New Company Request</span></a>
+                                    <div class="my-4">
+                                        <a class="add-btn" href="~/CompanyRequest/AddCompanyRequest"><span>Add New Company Request <i class="bi bi-plus"></i></span></a>
+                                    </div>
                                 </div>
 
                                 <table class="table table-borderless datatable" id="CompanyRequestList">

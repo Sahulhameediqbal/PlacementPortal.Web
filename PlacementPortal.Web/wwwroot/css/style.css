@@ -1253,3 +1253,35 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+/* Login */
+.credits.login {
+    color: #fff;
+}
+.credits.login a {
+    color: #fff;
+    font-weight: bold;
+}
+    .bg-img {
+    background: url(/img/bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: auto;
+}
+
+/* Error Message */
+#message {
+    background: #ef5e5e;
+    color: #fff;
+    padding: 4px 14px;
+    margin: 10px;
+}
+/* Add Button */
+a.add-btn {
+    background: #012970;
+    color: #fff;
+    display: inline;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
