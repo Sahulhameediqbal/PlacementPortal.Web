@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PlacementPortal.Application.Interfaces.Services;
+using PlacementPortal.Application.Services;
 using PlacementPortal.Model.Models;
 using PlacementPortal.Web.Models;
 
@@ -30,16 +31,21 @@ namespace PlacementPortal.Web.Controllers
             _userService = userService;
         }
 
+        [HttpGet]
+        public IActionResult Student()
+        {
+            return View("Student");
+        }
+
         /// <summary>
         /// Load Student Page with all Student
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of Student</returns>
         [HttpGet]
-        public async Task<IActionResult> Student()
+        public JsonResult GetAllStudent()
         {
-            List<StudentInfoModel> lstStudent = new List<StudentInfoModel>();
-            lstStudent = await _studentInfoService.GetAll();
-            return View("Student");
+            var lstStudent = _studentInfoService.GetAll().Result;
+            return Json(new { data = lstStudent });
         }
 
         //[HttpGet]
