@@ -130,3 +130,30 @@ function PasswordValidator(passwordstrength) {
         return false;
     }
 }
+
+function GetAllRegister() {
+
+    $.ajax({
+        type: "Get",
+        url: "/Register/GetAllRegister",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+
+        success: function (result) {
+
+            $("#RegisterInfo tbody").empty();
+            $.each(result.data, function (key, value) {
+
+                var rows = "<tr>"
+                    + "<td>" + value.id + "</td>"
+                    + "<td>" + value.name + "</td>"
+                    + "<td>" + value.email + "</td>"
+                    + "</tr>"
+                $("#RegisterInfo tbody").append(rows);
+            })
+        },
+        error: function (req, status, error) {
+            $("#message").html("Error while Loading Student Details!");
+        }
+    });
+}

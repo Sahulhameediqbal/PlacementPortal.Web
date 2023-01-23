@@ -57,6 +57,13 @@ namespace PlacementPortal.Web.Controllers
         //    return Json(new { data = student.Colleges });
         //}
 
+        //[HttpGet]
+        //public JsonResult GetAllRegister()
+        //{
+        //    var lstRegister = _authenticationService.GetAll().Result;
+        //    return Json(new { data = lstRegister });
+        //}
+
         /// <summary>
         /// Save the User Data
         /// </summary>
